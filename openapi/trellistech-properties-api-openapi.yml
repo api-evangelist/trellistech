@@ -1,0 +1,1361 @@
+openapi: 3.1.0
+info:
+  title: Trellis Public API v1 properties API
+  version: 1.4.0
+  description: Public, versioned REST contracts for workspace-scoped Trellis tasks and properties. Authenticate with an existing workspace API key.
+servers:
+- url: /
+  description: Current host
+tags:
+- name: properties
+  description: Trellis property contracts generated from Hono/Zod schemas.
+paths:
+  /api/v1/workspaces/{workspaceId}/properties:
+    get:
+      tags:
+      - properties
+      summary: List properties
+      description: Returns non-deleted Trellis properties for the authenticated workspace. Use `status` or `q` to narrow the result set.
+      security:
+      - WorkspaceApiKey: []
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+          example: haven-vacation-rentals
+        required: true
+        name: workspaceId
+        in: path
+      - schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 50
+          example: 50
+          description: Maximum number of items to return.
+        required: false
+        description: Maximum number of items to return.
+        name: limit
+        in: query
+      - schema:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+          default: 0
+          example: 0
+          description: Number of items to skip.
+        required: false
+        description: Number of items to skip.
+        name: offset
+        in: query
+      - schema:
+          allOf:
+          - $ref: '#/components/schemas/PropertyStatus'
+          - description: Filter properties by lifecycle status.
+            example: ACTIVE
+        required: false
+        description: Filter properties by lifecycle status.
+        name: status
+        in: query
+      - schema:
+          type: string
+          minLength: 1
+          maxLength: 120
+          description: Case-insensitive search over name, internal code, and city.
+        required: false
+        description: Case-insensitive search over name, internal code, and city.
+        name: q
+        in: query
+      responses:
+        '200':
+          description: Properties in the workspace.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPropertiesResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+    post:
+      tags:
+      - properties
+      summary: Create a property
+      description: Creates a Trellis property in the authenticated workspace.
+      security:
+      - WorkspaceApiKey: []
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+          example: haven-vacation-rentals
+        required: true
+        name: workspaceId
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePropertyRequest'
+      responses:
+        '201':
+          description: The created property.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutatePropertyResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /api/v1/workspaces/{workspaceId}/properties/{propertyId}:
+    get:
+      tags:
+      - properties
+      summary: Get a property
+      description: Returns one non-deleted Trellis property by id within the authenticated workspace.
+      security:
+      - WorkspaceApiKey: []
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+          example: haven-vacation-rentals
+        required: true
+        name: workspaceId
+        in: path
+      - schema:
+          type: string
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        required: true
+        name: propertyId
+        in: path
+      responses:
+        '200':
+          description: The requested property.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPropertyResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+    put:
+      tags:
+      - properties
+      summary: Replace property fields
+      description: Applies the supplied property fields using the same mutation behavior as PATCH. Omitted fields are left unchanged.
+      security:
+      - WorkspaceApiKey: []
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+          example: haven-vacation-rentals
+        required: true
+        name: workspaceId
+        in: path
+      - schema:
+          type: string
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        required: true
+        name: propertyId
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePropertyRequest'
+      responses:
+        '200':
+          description: The updated property.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutatePropertyResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+    delete:
+      tags:
+      - properties
+      summary: Delete a property
+      description: Soft-deletes a Trellis property in the authenticated workspace.
+      security:
+      - WorkspaceApiKey: []
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+          example: haven-vacation-rentals
+        required: true
+        name: workspaceId
+        in: path
+      - schema:
+          type: string
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        required: true
+        name: propertyId
+        in: path
+      responses:
+        '200':
+          description: The property was deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletePropertyResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+    patch:
+      tags:
+      - properties
+      summary: Update a property
+      description: Updates a Trellis property in the authenticated workspace.
+      security:
+      - WorkspaceApiKey: []
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+          example: haven-vacation-rentals
+        required: true
+        name: workspaceId
+        in: path
+      - schema:
+          type: string
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        required: true
+        name: propertyId
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePropertyRequest'
+      responses:
+        '200':
+          description: The updated property.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutatePropertyResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+components:
+  schemas:
+    PropertyLifecycleStage:
+      type:
+      - string
+      - 'null'
+      enum:
+      - PROSPECT
+      - ONBOARDING
+      - ACTIVE
+      - AT_RISK
+      - PAUSED
+      - INACTIVE
+      - CHURNED
+      - null
+    DeletePropertyResponse:
+      type: object
+      properties:
+        deleted:
+          type: boolean
+          example: true
+        propertyId:
+          type: string
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+      required:
+      - deleted
+      - propertyId
+    UpdatePropertyRequest:
+      type: object
+      properties:
+        sourceIntegrationId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        internalName:
+          type:
+          - string
+          - 'null'
+        internalCode:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/PropertyStatus'
+        lifecycleStage:
+          $ref: '#/components/schemas/PropertyLifecycleStage'
+        address:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        postalCode:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type:
+          - number
+          - 'null'
+        longitude:
+          type:
+          - number
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        houseRules:
+          type:
+          - string
+          - 'null'
+        propertyType:
+          type:
+          - string
+          - 'null'
+        timezone:
+          type:
+          - string
+          - 'null'
+        bedrooms:
+          type:
+          - integer
+          - 'null'
+        bathrooms:
+          type:
+          - number
+          - 'null'
+        beds:
+          type:
+          - integer
+          - 'null'
+        kitchens:
+          type:
+          - integer
+          - 'null'
+        livingRooms:
+          type:
+          - integer
+          - 'null'
+        hallways:
+          type:
+          - integer
+          - 'null'
+        terraces:
+          type:
+          - integer
+          - 'null'
+        balconies:
+          type:
+          - integer
+          - 'null'
+        gardens:
+          type:
+          - integer
+          - 'null'
+        minGuests:
+          type:
+          - integer
+          - 'null'
+        maxGuests:
+          type:
+          - integer
+          - 'null'
+        squareMeters:
+          type:
+          - number
+          - 'null'
+        floor:
+          type:
+          - integer
+          - 'null'
+        hasElevator:
+          type: boolean
+        hasParking:
+          type: boolean
+        minNights:
+          type:
+          - integer
+          - 'null'
+        maxNights:
+          type:
+          - integer
+          - 'null'
+        cleaningFee:
+          type:
+          - number
+          - 'null'
+        managementFee:
+          type:
+          - number
+          - 'null'
+        dealValue:
+          type:
+          - number
+          - 'null'
+        checkinInstructions:
+          type:
+          - string
+          - 'null'
+        checkoutInstructions:
+          type:
+          - string
+          - 'null'
+        parkingInstructions:
+          type:
+          - string
+          - 'null'
+        accessCode:
+          type:
+          - string
+          - 'null'
+        checkinVideoUrl:
+          type:
+          - string
+          - 'null'
+        intercomName:
+          type:
+          - string
+          - 'null'
+        checkinTime:
+          type:
+          - string
+          - 'null'
+        checkinTimeEnd:
+          type:
+          - string
+          - 'null'
+        checkoutTime:
+          type:
+          - string
+          - 'null'
+        supportPhone:
+          type:
+          - string
+          - 'null'
+        wifiName:
+          type:
+          - string
+          - 'null'
+        wifiPassword:
+          type:
+          - string
+          - 'null'
+        lockProvider:
+          type:
+          - string
+          - 'null'
+        lockDeviceId:
+          type:
+          - string
+          - 'null'
+        hasSmartLock:
+          type: boolean
+        shellyDeviceId:
+          type:
+          - string
+          - 'null'
+        manualConfig: {}
+        cleaningInstructions:
+          type:
+          - string
+          - 'null'
+        propertyLicenseNumber:
+          type:
+          - string
+          - 'null'
+        customFields:
+          type: object
+          additionalProperties: {}
+        name:
+          type: string
+          minLength: 1
+    GetPropertyResponse:
+      type: object
+      properties:
+        property:
+          $ref: '#/components/schemas/Property'
+      required:
+      - property
+    MutatePropertyResponse:
+      type: object
+      properties:
+        property:
+          $ref: '#/components/schemas/Property'
+      required:
+      - property
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+          minimum: 0
+          example: 125
+        limit:
+          type: integer
+          exclusiveMinimum: 0
+          example: 50
+        offset:
+          type: integer
+          minimum: 0
+          example: 0
+        hasMore:
+          type: boolean
+          example: true
+      required:
+      - total
+      - limit
+      - offset
+      - hasMore
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        details: {}
+      required:
+      - error
+    CreatePropertyRequest:
+      type: object
+      properties:
+        sourceIntegrationId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        internalName:
+          type:
+          - string
+          - 'null'
+        internalCode:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/PropertyStatus'
+        lifecycleStage:
+          $ref: '#/components/schemas/PropertyLifecycleStage'
+        address:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        postalCode:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type:
+          - number
+          - 'null'
+        longitude:
+          type:
+          - number
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        houseRules:
+          type:
+          - string
+          - 'null'
+        propertyType:
+          type:
+          - string
+          - 'null'
+        timezone:
+          type:
+          - string
+          - 'null'
+        bedrooms:
+          type:
+          - integer
+          - 'null'
+        bathrooms:
+          type:
+          - number
+          - 'null'
+        beds:
+          type:
+          - integer
+          - 'null'
+        kitchens:
+          type:
+          - integer
+          - 'null'
+        livingRooms:
+          type:
+          - integer
+          - 'null'
+        hallways:
+          type:
+          - integer
+          - 'null'
+        terraces:
+          type:
+          - integer
+          - 'null'
+        balconies:
+          type:
+          - integer
+          - 'null'
+        gardens:
+          type:
+          - integer
+          - 'null'
+        minGuests:
+          type:
+          - integer
+          - 'null'
+        maxGuests:
+          type:
+          - integer
+          - 'null'
+        squareMeters:
+          type:
+          - number
+          - 'null'
+        floor:
+          type:
+          - integer
+          - 'null'
+        hasElevator:
+          type: boolean
+        hasParking:
+          type: boolean
+        minNights:
+          type:
+          - integer
+          - 'null'
+        maxNights:
+          type:
+          - integer
+          - 'null'
+        cleaningFee:
+          type:
+          - number
+          - 'null'
+        managementFee:
+          type:
+          - number
+          - 'null'
+        dealValue:
+          type:
+          - number
+          - 'null'
+        checkinInstructions:
+          type:
+          - string
+          - 'null'
+        checkoutInstructions:
+          type:
+          - string
+          - 'null'
+        parkingInstructions:
+          type:
+          - string
+          - 'null'
+        accessCode:
+          type:
+          - string
+          - 'null'
+        checkinVideoUrl:
+          type:
+          - string
+          - 'null'
+        intercomName:
+          type:
+          - string
+          - 'null'
+        checkinTime:
+          type:
+          - string
+          - 'null'
+        checkinTimeEnd:
+          type:
+          - string
+          - 'null'
+        checkoutTime:
+          type:
+          - string
+          - 'null'
+        supportPhone:
+          type:
+          - string
+          - 'null'
+        wifiName:
+          type:
+          - string
+          - 'null'
+        wifiPassword:
+          type:
+          - string
+          - 'null'
+        lockProvider:
+          type:
+          - string
+          - 'null'
+        lockDeviceId:
+          type:
+          - string
+          - 'null'
+        hasSmartLock:
+          type: boolean
+        shellyDeviceId:
+          type:
+          - string
+          - 'null'
+        manualConfig: {}
+        cleaningInstructions:
+          type:
+          - string
+          - 'null'
+        propertyLicenseNumber:
+          type:
+          - string
+          - 'null'
+        customFields:
+          type: object
+          additionalProperties: {}
+        name:
+          type: string
+          minLength: 1
+          example: Casa Duomo
+      required:
+      - name
+    PropertyStatus:
+      type: string
+      enum:
+      - PROSPECT
+      - ONBOARDING
+      - ACTIVE
+      - AT_RISK
+      - INACTIVE
+    Property:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        workspaceId:
+          type: string
+          minLength: 1
+          example: haven-vacation-rentals
+        sourceIntegrationId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        name:
+          type: string
+          example: Casa Duomo
+        internalName:
+          type:
+          - string
+          - 'null'
+          example: MIL-001
+        internalCode:
+          type:
+          - string
+          - 'null'
+          example: MIL-001
+        status:
+          $ref: '#/components/schemas/PropertyStatus'
+        lifecycleStage:
+          type:
+          - string
+          - 'null'
+          example: live
+        address:
+          type:
+          - string
+          - 'null'
+          example: Via Torino 1
+        city:
+          type:
+          - string
+          - 'null'
+          example: Milano
+        postalCode:
+          type:
+          - string
+          - 'null'
+          example: '20123'
+        country:
+          type:
+          - string
+          - 'null'
+          example: IT
+        latitude:
+          type:
+          - number
+          - 'null'
+          example: 45.4642
+        longitude:
+          type:
+          - number
+          - 'null'
+          example: 9.19
+        description:
+          type:
+          - string
+          - 'null'
+        houseRules:
+          type:
+          - string
+          - 'null'
+        propertyType:
+          type:
+          - string
+          - 'null'
+          example: apartment
+        timezone:
+          type:
+          - string
+          - 'null'
+          example: Europe/Rome
+        bedrooms:
+          type:
+          - integer
+          - 'null'
+          example: 2
+        bathrooms:
+          type:
+          - number
+          - 'null'
+          example: 1.5
+        beds:
+          type:
+          - integer
+          - 'null'
+          example: 3
+        kitchens:
+          type:
+          - integer
+          - 'null'
+          example: 1
+        livingRooms:
+          type:
+          - integer
+          - 'null'
+          example: 1
+        hallways:
+          type:
+          - integer
+          - 'null'
+          example: 1
+        terraces:
+          type:
+          - integer
+          - 'null'
+          example: 0
+        balconies:
+          type:
+          - integer
+          - 'null'
+          example: 1
+        gardens:
+          type:
+          - integer
+          - 'null'
+          example: 0
+        minGuests:
+          type:
+          - integer
+          - 'null'
+          example: 1
+        maxGuests:
+          type:
+          - integer
+          - 'null'
+          example: 4
+        squareMeters:
+          type:
+          - number
+          - 'null'
+          example: 72.5
+        floor:
+          type:
+          - integer
+          - 'null'
+          example: 3
+        hasElevator:
+          type: boolean
+          example: true
+        hasParking:
+          type: boolean
+          example: false
+        minNights:
+          type:
+          - integer
+          - 'null'
+          example: 2
+        maxNights:
+          type:
+          - integer
+          - 'null'
+          example: 30
+        cleaningFee:
+          type:
+          - number
+          - 'null'
+          example: 85
+        managementFee:
+          type:
+          - number
+          - 'null'
+          example: 18
+        dealValue:
+          type:
+          - number
+          - 'null'
+          example: 250000
+        checkinInstructions:
+          type:
+          - string
+          - 'null'
+        checkoutInstructions:
+          type:
+          - string
+          - 'null'
+        parkingInstructions:
+          type:
+          - string
+          - 'null'
+        accessCode:
+          type:
+          - string
+          - 'null'
+        checkinVideoUrl:
+          type:
+          - string
+          - 'null'
+        intercomName:
+          type:
+          - string
+          - 'null'
+        checkinTime:
+          type:
+          - string
+          - 'null'
+          example: '15:00'
+        checkinTimeEnd:
+          type:
+          - string
+          - 'null'
+          example: '21:00'
+        checkoutTime:
+          type:
+          - string
+          - 'null'
+          example: '10:00'
+        supportPhone:
+          type:
+          - string
+          - 'null'
+        wifiName:
+          type:
+          - string
+          - 'null'
+        wifiPassword:
+          type:
+          - string
+          - 'null'
+        lockProvider:
+          type:
+          - string
+          - 'null'
+        lockDeviceId:
+          type:
+          - string
+          - 'null'
+        hasSmartLock:
+          type: boolean
+          example: false
+        shellyDeviceId:
+          type:
+          - string
+          - 'null'
+        manualConfig:
+          description: Guest manual configuration stored for this property.
+        cleaningInstructions:
+          type:
+          - string
+          - 'null'
+        propertyLicenseNumber:
+          type:
+          - string
+          - 'null'
+        defaultWarehouseId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        customFields:
+          type: object
+          additionalProperties: {}
+          description: Workspace-specific property fields configured in Trellis.
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-05-22T17:00:00.000Z'
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2026-05-22T17:00:00.000Z'
+      required:
+      - id
+      - workspaceId
+      - sourceIntegrationId
+      - name
+      - internalName
+      - internalCode
+      - status
+      - lifecycleStage
+      - address
+      - city
+      - postalCode
+      - country
+      - latitude
+      - longitude
+      - description
+      - houseRules
+      - propertyType
+      - timezone
+      - bedrooms
+      - bathrooms
+      - beds
+      - kitchens
+      - livingRooms
+      - hallways
+      - terraces
+      - balconies
+      - gardens
+      - minGuests
+      - maxGuests
+      - squareMeters
+      - floor
+      - hasElevator
+      - hasParking
+      - minNights
+      - maxNights
+      - cleaningFee
+      - managementFee
+      - dealValue
+      - checkinInstructions
+      - checkoutInstructions
+      - parkingInstructions
+      - accessCode
+      - checkinVideoUrl
+      - intercomName
+      - checkinTime
+      - checkinTimeEnd
+      - checkoutTime
+      - supportPhone
+      - wifiName
+      - wifiPassword
+      - lockProvider
+      - lockDeviceId
+      - hasSmartLock
+      - shellyDeviceId
+      - cleaningInstructions
+      - propertyLicenseNumber
+      - defaultWarehouseId
+      - customFields
+      - createdAt
+      - updatedAt
+    ListPropertiesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - items
+      - pagination
+  securitySchemes:
+    WorkspaceApiKey:
+      type: http
+      scheme: bearer
+      bearerFormat: trls_...
+      description: Workspace-scoped Trellis API key created from Settings > Developer. The requested `workspaceId` must match the key workspace.
+x-trellis-contracts:
+  apiVersion: v1
+  openApiVersion: 3.1.0
+  contractVersion: 1.4.0
+  releasedAt: '2026-06-18'
+  resources:
+    tasks: tasks.v1.3.0
+    properties: properties.v1.2.0
