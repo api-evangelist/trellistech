@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: probed
+source: >-
+  Live probes of /.well-known/ paths on www.trellistech.com and app.trellistech.com
+  (2026-07-21). No well-known documents are published.
+hosts_probed:
+- https://www.trellistech.com
+- https://app.trellistech.com
+paths:
+- path: /.well-known/security.txt
+  host: www.trellistech.com
+  status: 404
+  file: null
+- path: /.well-known/openid-configuration
+  host: www.trellistech.com
+  status: 404
+  file: null
+- path: /.well-known/oauth-authorization-server
+  host: www.trellistech.com
+  status: 404
+  file: null
+- path: /.well-known/api-catalog
+  host: www.trellistech.com
+  status: 404
+  file: null
+- path: /.well-known/ai-plugin.json
+  host: www.trellistech.com
+  status: 404
+  file: null
+- path: /.well-known/security.txt
+  host: app.trellistech.com
+  status: 404
+  file: null
+- path: /.well-known/openid-configuration
+  host: app.trellistech.com
+  status: 404
+  file: null
+- path: /.well-known/oauth-authorization-server
+  host: app.trellistech.com
+  status: 404
+  file: null
+notes: >-
+  No well-known metadata documents were found. Trellis authenticates the public REST
+  API and MCP server with workspace-scoped bearer API keys rather than an OAuth /
+  OpenID Connect discovery flow, so no authorization-server metadata is expected.

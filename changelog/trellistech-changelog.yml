@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.trellistech.com/changelog
+description: >-
+  Trellis customer-facing changelog. Entries are grouped by date and product area. This
+  captures the recent window; see the source URL for the full history (contact
+  support@trellistech.com for older or more detailed release history).
+scheme: date-grouped (by day and product area), not semver-tagged
+url: https://docs.trellistech.com/changelog
+current_api_contract: 1.4.0
+cadence: daily customer-facing updates
+recent_entries:
+- date: '2026-07-03'
+  breaking: false
+  areas: [Inbox, Contacts, Tasks and Workforce, Properties, CRM, Automations, Integrations]
+  highlights:
+  - Inbox filter menu redesign with property preview and steady scroll height.
+  - Gmail reply prefill and WhatsApp automated-reply badges with full-length translation.
+  - Snappier AI chat (complete messages instead of typewriter effect).
+  - Bulk edit of People (contacts) and reliable Guest contact type.
+  - Auto-complete vendor visits on mobile; resend vendor invites / password resets.
+  - Delete PMS-linked properties even when connected to a property management system.
+  - Co-signed contracts (one contract, multiple signers) in CRM.
+  - New parking-request automation template.
+  - New Chekin integration; steadier Guesty sync; Breezeway task-sync fix.
+- date: '2026-06-09'
+  breaking: false
+  areas: [AI Hub and AI Agent]
+  highlights:
+  - AI Agent can show a live step-by-step plan/checklist while working on larger requests.
+  - Agent can pause to ask clarifying questions and continue after you answer.
+  - More natural agent replies that better follow agent instructions.
+- date: '2026-05-04'
+  breaking: false
+  areas: [Platform]
+  highlights:
+  - May 2026 platform updates (see changelog for detail).
+- date: '2026-04-30'
+  breaking: false
+  areas: [Platform]
+  highlights:
+  - April 2026 saw near-daily releases across the platform (Apr 1-30).
+notes: >-
+  The changelog also exists as a docs page linked from the marketing site
+  (https://docs.trellistech.com/changelog). Breaking-change signaling for the API contract
+  is tracked separately via URL/object contract versions - see lifecycle/.

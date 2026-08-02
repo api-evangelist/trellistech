@@ -1,8 +1,29 @@
 aid: trellistech
-name: Trellistech
-description: Trellistech is a company surfaced as a portfolio company of y-combinator and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+name: Trellis
+description: >-
+  Trellis (Trellistech) is a Y Combinator-backed, AI-powered property operations
+  platform for short-term and vacation rental operators. Trellis deploys AI agents
+  across an operator's entire business - handling guest communications, coordinating
+  field teams, and running day-to-day operations such as tasks, workforce scheduling,
+  accounting, reviews, and the guest portal. For developers, Trellis publishes a
+  versioned public REST API for CRUD access to tasks and properties, an official
+  hosted MCP server (@trellistech/mcp-server) that exposes operational read and gated
+  write tools to any MCP-compatible AI client, and connectors for property and finance
+  systems including Guesty, Hostaway, Breezeway, Calry, Krossbooking, and Ramp.
 url: https://raw.githubusercontent.com/api-evangelist/trellistech/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.trellistech.com/trellis-icon.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -11,12 +32,116 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Property Management
+- Vacation Rentals
+- Short-Term Rentals
+- AI Agents
+- Operations
+- Hospitality
+- Task Management
+- Model Context Protocol
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: trellistech:trellistech-properties-api
+  name: Trellis properties API
+  description: Trellis property contracts generated from Hono/Zod schemas.
+  humanURL: https://docs.trellistech.com/api-reference/introduction
+  baseURL: https://app.trellistech.com/api/v1
+  tags:
+  - properties
+  properties:
+  - type: OpenAPI
+    url: openapi/trellistech-properties-api-openapi.yml
+  - type: Authentication
+    url: authentication/trellistech-authentication.yml
+  - type: Conventions
+    url: conventions/trellistech-conventions.yml
+  - type: ErrorCatalog
+    url: errors/trellistech-problem-types.yml
+  - type: DataModel
+    url: data-model/trellistech-data-model.yml
+  - type: Conformance
+    url: conformance/trellistech-conformance.yml
+  - type: Documentation
+    url: https://docs.trellistech.com/api-reference/public-rest-api
+  - type: APIReference
+    url: https://docs.trellistech.com/api-reference/introduction
+- aid: trellistech:trellistech-tasks-api
+  name: Trellis tasks API
+  description: Trellis task contracts generated from Hono/Zod schemas.
+  humanURL: https://docs.trellistech.com/api-reference/introduction
+  baseURL: https://app.trellistech.com/api/v1
+  tags:
+  - tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/trellistech-tasks-api-openapi.yml
+  - type: Authentication
+    url: authentication/trellistech-authentication.yml
+  - type: Conventions
+    url: conventions/trellistech-conventions.yml
+  - type: ErrorCatalog
+    url: errors/trellistech-problem-types.yml
+  - type: DataModel
+    url: data-model/trellistech-data-model.yml
+  - type: Conformance
+    url: conformance/trellistech-conformance.yml
+  - type: Documentation
+    url: https://docs.trellistech.com/api-reference/public-rest-api
+  - type: APIReference
+    url: https://docs.trellistech.com/api-reference/introduction
+common:
+- type: LLMsTxt
+  url: llms/trellistech-llms.txt
+- type: MCPServer
+  url: mcp/trellistech-mcp.yml
+- type: Packages
+  url: packages/trellistech-packages.yml
+- type: CLI
+  url: cli/trellistech-cli.yml
+- type: ChangeLog
+  url: changelog/trellistech-changelog.yml
+- type: Lifecycle
+  url: lifecycle/trellistech-lifecycle.yml
+- type: StatusPage
+  url: https://status.trellistech.com
+- type: WellKnown
+  url: well-known/trellistech-well-known.yml
+- type: DomainSecurity
+  url: security/trellistech-domain-security.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DeveloperPortal
+  url: https://docs.trellistech.com
+- type: Documentation
+  url: https://docs.trellistech.com
+- type: APIReference
+  url: https://docs.trellistech.com/api-reference/introduction
+- type: GettingStarted
+  url: https://docs.trellistech.com/quickstart
+- type: Blog
+  url: https://www.trellistech.com/blog
+- type: GitHubOrganization
+  url: https://github.com/trellis-tech
+- type: SignUp
+  url: https://app.trellistech.com
+- type: Support
+  url: mailto:support@trellistech.com
+- type: TermsOfService
+  url: https://www.trellistech.com/terms
+- type: PrivacyPolicy
+  url: https://www.trellistech.com/privacy
+- type: Website
+  url: https://www.trellistech.com
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1

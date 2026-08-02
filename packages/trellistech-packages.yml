@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://registry.npmjs.org/@trellistech/mcp-server and
+  https://docs.trellistech.com/api-reference/mcp-server
+description: >-
+  First-party published packages for Trellis. Trellis does not ship a conventional
+  multi-language client SDK; its published package is the MCP server installer and stdio
+  bridge, which doubles as the Trellis CLI.
+packages:
+- name: '@trellistech/mcp-server'
+  registry: npm
+  url: https://www.npmjs.com/package/@trellistech/mcp-server
+  version: 0.1.0
+  license: MIT
+  official: true
+  language: JavaScript/Node.js
+  description: >-
+    Trellis MCP server installer and stdio bridge for Claude Code, Claude Desktop, Claude
+    Cowork, Cursor, Codex, and generic MCP clients. Registers the hosted Streamable HTTP
+    endpoint or runs a local stdio bridge to it.
+  homepage: https://github.com/trellis-tech/trellis/tree/main/trellis-mcp#readme
+  install: npx -y @trellistech/mcp-server
+  role: MCP client bridge + CLI (see cli/trellistech-cli.yml, mcp/trellistech-mcp.yml)
+notes: >-
+  No first-party REST client library was found on npm, PyPI, Maven Central, NuGet,
+  RubyGems, Packagist, or crates.io. The Public REST API is consumed directly over HTTPS
+  with a bearer workspace API key. If Trellis later publishes a typed client SDK, add it
+  here and mirror an apis.yml `type: SDKs` pointer.

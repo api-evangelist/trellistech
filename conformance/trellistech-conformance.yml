@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from openapi/trellistech-public-api.json and the Public REST API + Authentication
+  docs (https://docs.trellistech.com/api-reference/). Each entry records whether Trellis
+  conforms to a cross-cutting standard, with evidence.
+description: >-
+  Conformance assertions for the Trellis Public REST API against common cross-cutting API
+  standards. Trellis is a bespoke REST API; it does not claim any formal industry protocol
+  certification.
+standards:
+- id: oauth2
+  conforms: false
+  evidence: >-
+    Auth is bearer workspace API keys and a bespoke email/password session-token flow
+    (/api/v1/auth/token, /auth/refresh). No OAuth 2.0 authorization-server metadata,
+    scopes, or grant flows are documented.
+- id: oidc
+  conforms: false
+  evidence: No OpenID Connect discovery document; /.well-known/openid-configuration returns 404.
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    Errors use a custom {error, message, details} JSON envelope with content-type
+    application/json, not application/problem+json.
+- id: pagination
+  conforms: true
+  evidence: >-
+    Consistent limit/offset pagination (limit default 50, range 1-100; offset >= 0) with a
+    standard {items, pagination:{total,limit,offset,hasMore}} response envelope.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key mechanism is documented for write operations.
+- id: openapi
+  conforms: true
+  evidence: >-
+    Publishes an OpenAPI 3.1.0 document at /api/v1/openapi.public.json (contract 1.4.0),
+    captured at openapi/trellistech-public-api.json.
+- id: url-versioning
+  conforms: true
+  evidence: >-
+    API version is carried in the URL path (/api/v1). Object contracts are versioned
+    (tasks.v1.3.0, properties.v1.2.0); breaking changes require a new contract/API version.
+- id: mcp
+  conforms: true
+  evidence: >-
+    Ships an official Model Context Protocol server (hosted Streamable HTTP endpoint plus
+    stdio bridge via @trellistech/mcp-server) exposing tools and read-only resources.
+- id: fhir
+  conforms: false
+  evidence: Not a healthcare API.
+- id: scim
+  conforms: false
+  evidence: No SCIM user/group provisioning endpoints.
+- id: json:api
+  conforms: false
+  evidence: Custom JSON envelope, not the JSON:API media type or document structure.

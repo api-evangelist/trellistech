@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from response codes and the ApiError schema in
+  openapi/trellistech-public-api.json, enriched from the Errors table at
+  https://docs.trellistech.com/api-reference/public-rest-api
+description: >-
+  Error catalog for the Trellis Public REST API. Every operation returns errors in a
+  custom JSON envelope (NOT RFC 9457 problem+json). The same status set applies to every
+  properties and tasks endpoint.
+format: custom-json
+envelope:
+  content_type: application/json
+  schema:
+    error: string (required) - machine-readable error code
+    message: string - human-readable description
+    details: any - optional additional context
+problem_types:
+- status: 400
+  title: Bad Request
+  meaning: Request validation failed.
+  remediation: Fix the request body/query parameters to satisfy the documented schema.
+- status: 401
+  title: Unauthorized
+  meaning: API key is missing, invalid, expired, or not valid for the requested workspace.
+  remediation: >-
+    Recreate the workspace API key in Settings > Developer, or refresh an expired session
+    access token. Ensure the {workspaceId} matches the key's workspace.
+- status: 403
+  title: Forbidden
+  meaning: Authenticated user does not have access to the requested workspace.
+  remediation: Confirm the user behind the key belongs to the target workspace.
+- status: 404
+  title: Not Found
+  meaning: Workspace, task, or property was not found.
+  remediation: Verify the workspaceId and resource ID; the resource may be soft-deleted.
+- status: 409
+  title: Conflict
+  meaning: Task completion is blocked by another task or a workflow rule.
+  remediation: Resolve the blocking task/workflow dependency before retrying.
+- status: 422
+  title: Unprocessable Entity
+  meaning: Request is valid JSON but cannot be applied to the current object state.
+  remediation: Re-read the object and reconcile state before re-applying the mutation.
+- status: 500
+  title: Internal Server Error
+  meaning: Trellis could not complete the request.
+  remediation: Retry later; contact support@trellistech.com if it persists.

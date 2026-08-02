@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.trellistech.com/api-reference/authentication
+docs: https://docs.trellistech.com/api-reference/authentication
+name: Trellis Public API Authentication
+description: >-
+  Trellis supports two authentication methods for API and MCP access: workspace-scoped
+  API keys for trusted server-side integrations and MCP clients, and programmatic session
+  tokens for email/password flows that run under a specific Trellis user account.
+schemes:
+- id: WorkspaceApiKey
+  type: http
+  scheme: bearer
+  bearer_format: trls_...
+  location: Authorization header
+  from_openapi: true
+  description: >-
+    Workspace-scoped API key created in Settings > Developer. Sent as
+    `Authorization: Bearer trls_...`. The {workspaceId} path segment must match the
+    workspace that issued the key; cross-workspace calls are rejected with 401.
+  properties:
+    scope: single workspace per key
+    server_side_only: true
+    revocable: revoked keys stop working immediately (clients then receive 401)
+    display: shown once at creation; lost keys must be revoked and recreated
+    rotation: create separate keys per system so one can be revoked independently
+- id: SessionToken
+  type: http
+  scheme: bearer
+  bearer_format: JWT access token
+  from_openapi: false
+  description: >-
+    Programmatic session token obtained from POST /api/v1/auth/token with email and
+    password. Runs under a specific Trellis user profile. Works at runtime but is NOT
+    reflected in the generated OpenAPI (which documents workspace API keys only).
+  endpoints:
+  - method: POST
+    path: /api/v1/auth/token
+    description: Authenticate with email and password; returns accessToken + refreshToken
+  - method: POST
+    path: /api/v1/auth/refresh
+    description: Exchange a refresh token for a new access token
+  - method: GET
+    path: /api/v1/auth/me
+    description: Get the authenticated user profile (workspace API keys receive 401 here)
+  token:
+    type: bearer JWT
+    expires_in_seconds: 3600
+    refresh: refreshToken via /api/v1/auth/refresh
+oauth2: false
+openid_connect: false
+mutual_tls: false
+security_best_practices:
+- Store keys and tokens in environment variables or a secret manager; never commit to source control.
+- Rotate keys periodically; create separate keys per system for independent revocation.
+- Require explicit user confirmation before a connected client creates/updates records or sends messages.
+- Store refresh tokens securely and refresh proactively before the access token expires.

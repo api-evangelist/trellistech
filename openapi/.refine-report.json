@@ -1,0 +1,16 @@
+{
+  "provider": "trellistech",
+  "sources": [
+    "trellistech-properties-api-openapi.yml",
+    "trellistech-tasks-api-openapi.yml"
+  ],
+  "outputs": [
+    "trellistech-properties-api-openapi.yml",
+    "trellistech-tasks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

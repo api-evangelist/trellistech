@@ -1,0 +1,39 @@
+# Trellis
+
+> AI-powered property operations platform for short-term rental operators
+
+## Docs
+
+- [Authentication](https://docs.trellistech.com/api-reference/authentication.md): Workspace API keys, programmatic session authentication, and security guidance for Trellis integrations.
+- [API Reference](https://docs.trellistech.com/api-reference/introduction.md): Connect external AI clients and trusted services to Trellis with workspace-scoped API keys.
+- [Trellis MCP Server](https://docs.trellistech.com/api-reference/mcp-server.md): Install Trellis tools in any MCP-compatible client.
+- [Public REST API](https://docs.trellistech.com/api-reference/public-rest-api.md): Create, read, update, and delete Trellis tasks and properties with versioned public REST contracts.
+- [Changelog](https://docs.trellistech.com/changelog.md): Daily customer-facing updates for Trellis features, improvements, and fixes
+- [Breezeway](https://docs.trellistech.com/integrations/breezeway.md): Connect Breezeway to keep cleaning, maintenance, inspection, comments, photos, and assignments aligned
+- [Calry](https://docs.trellistech.com/integrations/calry.md): Connect Calry to bring properties, reservations, contacts, photos, and conversations from supported property systems into Trellis
+- [Guesty](https://docs.trellistech.com/integrations/guesty.md): Connect Guesty to bring properties, reservations, messages, owners, reviews, and calendar updates into Trellis
+- [Hostaway](https://docs.trellistech.com/integrations/hostaway.md): Connect Hostaway to bring properties, reservations, messages, reviews, and finance context into Trellis
+- [Krossbooking](https://docs.trellistech.com/integrations/krossbooking.md): Connect Krossbooking to bring properties, reservations, conversations, and reviews into Trellis
+- [Integrations overview](https://docs.trellistech.com/integrations/overview.md): Connect Trellis to the tools your team already uses for properties, messages, tasks, finance, and operations
+- [Ramp](https://docs.trellistech.com/integrations/ramp.md): Connect Ramp so approved AI agents can answer spend questions and add property notes to transactions
+- [Welcome to Trellis](https://docs.trellistech.com/introduction.md): The all-in-one platform that helps property managers run better short-term rentals - with less effort
+- [Accounting](https://docs.trellistech.com/platform/accounting.md): Review booking revenue, expenses, payments, ledgers, and owner statements
+- [AI Agent](https://docs.trellistech.com/platform/ai-agent.md): Use your AI teammate for guest replies, operating questions, meetings, and approved actions
+- [AI Hub](https://docs.trellistech.com/platform/ai-hub.md): Set up agents, knowledge, skills, and connected accounts so Trellis can help your team work faster
+- [Artifacts](https://docs.trellistech.com/platform/artifacts.md): Open files, images, dashboards, forms, and other work created during AI sessions
+- [Workflow automations](https://docs.trellistech.com/platform/automations.md): Use workflows to handle repeat work such as messages, tasks, approvals, and follow-ups
+- [Connected accounts](https://docs.trellistech.com/platform/connected-accounts.md): Save website credentials on an AI agent so it can use supported logged-in websites during browser sessions
+- [Contacts](https://docs.trellistech.com/platform/contacts.md): Manage guests, owners, vendors, teammates, and prospects with searchable profiles
+- [Guest portal](https://docs.trellistech.com/platform/guest-portal.md): Share stay information, house manuals, upsell links, and guest portal status from Trellis
+- [Inbox](https://docs.trellistech.com/platform/inbox.md): Manage guest, owner, vendor, and team conversations in one place
+- [Insights](https://docs.trellistech.com/platform/insights.md): Use dashboards and Pulse to understand guest messages, agent activity, tasks, workforce, and results
+- [Outbound messages](https://docs.trellistech.com/platform/outbound.md): Send guest, owner, vendor, and team messages from supported Trellis channels
+- [Properties](https://docs.trellistech.com/platform/properties.md): Keep property details, owners, reservations, access notes, and operating instructions organized
+- [Reviews](https://docs.trellistech.com/platform/reviews.md): Monitor guest reviews, find responses that need work, and review AI-assisted reply drafts
+- [Settings & Admin](https://docs.trellistech.com/platform/settings.md): Manage workspace setup, people, permissions, notifications, phone numbers, integrations, billing, and developer access
+- [Supplies](https://docs.trellistech.com/platform/supplies.md): Track supply items, inventory, warehouses, orders, deliveries, and task usage
+- [Tasks](https://docs.trellistech.com/platform/tasks.md): Create, assign, schedule, and track work for cleaning, maintenance, inspections, and guest requests
+- [Troubleshooting](https://docs.trellistech.com/platform/troubleshooting.md): Fix the most common issues with sign-in, messages, sync, AI replies, tasks, notifications, and mobile
+- [Workflows](https://docs.trellistech.com/platform/workflows.md): Build and review automated work for messages, tasks, approvals, upsells, and repeatable operations
+- [Workforce](https://docs.trellistech.com/platform/workforce.md): Schedule shifts, review approvals, track absences, and manage field teams
+- [Quickstart](https://docs.trellistech.com/quickstart.md): Set up Trellis and launch your first operational workflow

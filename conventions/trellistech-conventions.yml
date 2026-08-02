@@ -1,0 +1,84 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://docs.trellistech.com/api-reference/public-rest-api and
+  https://docs.trellistech.com/api-reference/authentication
+description: >-
+  Cross-cutting request/response conventions that apply across the Trellis Public REST
+  API, independent of any single operation - authentication style, pagination, field
+  expansion, metadata, versioning, the error envelope, and rate-limit signaling.
+base_url: https://app.trellistech.com/api/v1
+api_style: REST over HTTPS, JSON request and response bodies
+
+authentication:
+  scheme: Bearer token (workspace API key trls_... or session JWT access token)
+  workspace_scoping: >-
+    {workspaceId} path segment must match the key's workspace; mismatches return 401.
+  docs: https://docs.trellistech.com/api-reference/authentication
+  detail: authentication/trellistech-authentication.yml
+
+idempotency:
+  supported: false
+  note: >-
+    No idempotency key mechanism is documented for POST/PATCH/PUT requests. Create/update
+    calls run through the same mutation pipeline as the app (assignees, tags, activity,
+    notifications, automations, connected sync). Do not assume safe automatic retries of
+    writes.
+
+pagination:
+  style: limit/offset
+  request_params:
+    limit: default 50, range 1-100
+    offset: default 0, minimum 0
+  response_envelope:
+    items: array of records
+    pagination:
+      total: total matching records
+      limit: applied limit
+      offset: applied offset
+      hasMore: boolean, more pages available
+
+field_expansion:
+  supported: true
+  mechanism: include query parameter (comma-separated related resources)
+  examples:
+    tasks: include=costItems,assignees
+  note: List and get endpoints embed related resources inline when requested.
+
+metadata:
+  mechanism: customFields object on Property and Task records
+  description: Workspace-specific fields carried on the object and echoed on read.
+
+filtering:
+  properties: [status, q]
+  tasks: [status, priority, propertyId, departmentId, departmentKind, scheduledDate, scheduledFrom, scheduledTo, include, q]
+
+request_tracing:
+  documented: false
+  note: No request-id / correlation-id response header is documented.
+
+versioning:
+  api_version: v1 (in the URL path)
+  contract_version: 1.4.0 (current API contract release)
+  object_contracts:
+    tasks: tasks.v1.3.0
+    properties: properties.v1.2.0
+  openapi_version: 3.1.0 (served at /api/v1/openapi.public.json)
+  breaking_change_policy: >-
+    Breaking changes require a new object contract version or a new REST API version.
+  detail: lifecycle/trellistech-lifecycle.yml
+
+error_envelope:
+  shape: '{ "error": string, "message": string, "details": any }'
+  required: [error]
+  format: custom JSON (NOT RFC 9457 problem+json)
+  content_type: application/json
+  status_codes: [400, 401, 403, 404, 409, 422, 500]
+  detail: errors/trellistech-problem-types.yml
+
+rate_limiting:
+  rest_api: not documented in the public REST reference
+  mcp_server: >-
+    The hosted MCP endpoint applies basic per-key rate limiting; clients may receive a
+    "Rate limit exceeded" error and should retry after a minute or reduce concurrency.
+  signaling: No RateLimit-* headers are documented.

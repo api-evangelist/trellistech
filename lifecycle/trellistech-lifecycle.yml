@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://docs.trellistech.com/api-reference/public-rest-api (contract versions) and
+  https://docs.trellistech.com/changelog
+description: >-
+  Versioning, change, and status posture for the Trellis Public REST API and platform.
+versioning:
+  api_version: v1 (URL path)
+  contract_version: 1.4.0
+  openapi_version: 3.1.0
+  object_contracts:
+  - object: tasks
+    version: tasks.v1.3.0
+    notes: Adds daily work orders, cost items, assignees, and expanded filters.
+  - object: properties
+    version: properties.v1.2.0
+    notes: Removes legacy internal Italian property columns from the public contract.
+  scheme: URL path version plus per-object contract versions.
+breaking_change_policy: >-
+  Breaking changes require a new object contract version or a new REST API version. The
+  public REST surface is intentionally narrow; Trellis directs broader workflows to the
+  documented MCP tools or to support before building against undocumented objects.
+deprecation:
+  policy_documented: false
+  sunset_header: not documented
+  note: >-
+    No formal deprecation policy or RFC 8594 Sunset/Deprecation header contract is
+    published; version increments are the compatibility mechanism.
+changelog:
+  url: https://docs.trellistech.com/changelog
+  cadence: daily customer-facing updates, grouped by date and product area
+  detail: changelog/trellistech-changelog.yml
+status_page:
+  url: https://status.trellistech.com
+  title: Trellis Status
+  verified: true
+sla:
+  documented: false
+support:
+  email: support@trellistech.com
+  older_history: Contact support for older or more detailed release history.

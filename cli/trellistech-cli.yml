@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.trellistech.com/api-reference/mcp-server
+name: Trellis MCP CLI
+description: >-
+  First-party command-line tool shipped as the @trellistech/mcp-server npm package. It
+  installs, configures, diagnoses, and runs the Trellis MCP bridge for AI clients. The
+  binary itself lives in packages/trellistech-packages.yml.
+package: '@trellistech/mcp-server'
+invocation: npx -y @trellistech/mcp-server <command>
+install_methods:
+- npx -y @trellistech/mcp-server <command>   # zero-install via npx
+commands:
+- command: install <client>
+  description: >-
+    Install and register the hosted MCP endpoint with a supported client (e.g.
+    `claude-code`). Prompts once for TRELLIS_API_KEY and stores it in ~/.trellis/mcp.env.
+- command: print-config <target>
+  description: >-
+    Print a ready-to-paste config snippet for a client (e.g. `claude-desktop`,
+    `claude-hosted`).
+- command: stdio
+  description: Run the stdio bridge to the hosted Streamable HTTP MCP endpoint.
+- command: doctor
+  description: List the exposed tool catalog and diagnose connectivity / auth issues.
+environment:
+- TRELLIS_API_KEY   # workspace-scoped API key (trls_...), required
+- TRELLIS_MCP_URL   # hosted endpoint, defaults to https://api.trellistech.com/v1/mcp-server
+notes: >-
+  This CLI is MCP-focused; there is no separate general-purpose Trellis REST CLI. Public
+  REST operations are issued directly with curl/HTTP using a bearer workspace API key.

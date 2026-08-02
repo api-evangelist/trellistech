@@ -1,0 +1,103 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from the component schemas and id-reference fields in
+  openapi/trellistech-public-api.json, cross-checked against the object tables in
+  https://docs.trellistech.com/api-reference/public-rest-api
+description: >-
+  Entity-relationship graph for the Trellis Public REST API. All records are scoped to a
+  Workspace (string id). IDs are UUIDs unless noted. Relationships are inferred from
+  *Id reference fields and from include-expandable collections.
+id_conventions:
+  workspace_id: string (e.g. acme-vacations) - the top-level tenant scope
+  resource_ids: uuid v4
+  task_short_id: human-readable string (e.g. TK-1234)
+entities:
+- name: Workspace
+  id: workspaceId (string)
+  description: Tenant scope; every property, task, and API key belongs to one workspace.
+- name: Property
+  id: id (uuid)
+  description: A managed short-term rental unit with location, capacity, fees, and instructions.
+  key_fields: [name, status, city, propertyType, timezone, bedrooms, maxGuests, customFields]
+  statuses: [PROSPECT, ONBOARDING, ACTIVE, AT_RISK, INACTIVE]
+- name: Task
+  id: id (uuid)
+  short_id: shortId (e.g. TK-1234)
+  description: A unit of work (cleaning, maintenance, inspection, guest request) in a department.
+  key_fields: [title, status, priority, source, departmentId, propertyId, cost, customFields]
+  statuses: [OPEN, CREATED, DRAFT, DRAFTED, SCHEDULED, IN_PROGRESS, FINISHED, CLOSED, PENDING_APPROVAL, REQUEST_APPROVED, REQUEST_REJECTED, COMPLETED]
+- name: Department
+  id: id (uuid)
+  description: Owning group for a task (e.g. Maintenance); has kind field_ops for work orders.
+  embedded_on: Task.department (id, name, slug)
+- name: TaskCostItem
+  description: A cost line item on a task (amount, currency, description, billToType, categoryName, notes).
+  parent: Task
+- name: TaskAssignee
+  description: A user or vendor assigned to a task (role PRIMARY/SECONDARY, type USER/VENDOR).
+  parent: Task
+- name: DailyWorkOrder
+  description: A SCHEDULED field-ops task for a single date, rendered as a costed work order.
+  derived_from: Task
+relationships:
+- from: Property
+  to: Workspace
+  type: belongs_to
+  via: workspaceId
+- from: Task
+  to: Workspace
+  type: belongs_to
+  via: workspaceId
+- from: Task
+  to: Property
+  type: belongs_to
+  via: propertyId
+- from: Property
+  to: Task
+  type: has_many
+  via: propertyId (inverse)
+- from: Task
+  to: Department
+  type: belongs_to
+  via: departmentId
+- from: Task
+  to: Task
+  type: belongs_to
+  via: parentTaskId (subtask -> parent)
+- from: Task
+  to: Reservation
+  type: belongs_to
+  via: reservationId
+- from: Task
+  to: Contact
+  type: belongs_to
+  via: contactId
+- from: Task
+  to: TaskCostItem
+  type: has_many
+  via: costItems (include=costItems)
+- from: Task
+  to: TaskAssignee
+  type: has_many
+  via: assignees (include=assignees)
+- from: TaskAssignee
+  to: User
+  type: references
+  via: userId (when type=USER)
+- from: TaskAssignee
+  to: VendorOrg
+  type: references
+  via: vendorOrgId (when type=VENDOR)
+- from: DailyWorkOrder
+  to: Property
+  type: belongs_to
+  via: property.id
+- from: DailyWorkOrder
+  to: Department
+  type: belongs_to
+  via: department.id
+notes: >-
+  Reservation, Contact, User, and VendorOrg are referenced by id from Task but are not
+  themselves exposed as objects in the narrow public REST contract; broader access is via
+  the Trellis MCP tools (reservations, conversations, workforce, knowledge base).
