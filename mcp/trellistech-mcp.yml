@@ -2,7 +2,8 @@ generated: '2026-07-21'
 method: searched
 source: https://docs.trellistech.com/api-reference/mcp-server
 name: Trellis MCP Server
-status: official
+status: published
+status_raw: official
 description: >-
   Official Trellis Model Context Protocol server. Lets external AI clients use Trellis
   operational tools through a standard MCP connection - a hosted Streamable HTTP endpoint,
