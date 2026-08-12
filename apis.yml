@@ -98,6 +98,8 @@ apis:
   - type: APIReference
     url: https://docs.trellistech.com/api-reference/introduction
 common:
+- type: Overlay
+  url: overlays/trellistech-public-api-overlay.yaml
 - type: LLMsTxt
   url: llms/trellistech-llms.txt
 - type: MCPServer
