@@ -1,0 +1,3682 @@
+{
+  "item": [
+    {
+      "id": "9caa9a8f-95d3-467c-b0c0-4f2b2bd9f3cb",
+      "name": "properties",
+      "description": {
+        "content": "Trellis property contracts generated from Hono/Zod schemas.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0740adee-b30b-4c07-aeca-45b6020d8b01",
+          "name": "List properties",
+          "request": {
+            "name": "List properties",
+            "description": {
+              "content": "Returns non-deleted Trellis properties for the authenticated workspace. Use `status` or `q` to narrow the result set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter properties by lifecycle status."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Case-insensitive search over name, internal code, and city."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f984773-3422-4a9c-b65d-8f839af09a92",
+              "name": "Properties in the workspace.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"11111111-1111-4111-8111-111111111111\",\n      \"workspaceId\": \"haven-vacation-rentals\",\n      \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n      \"name\": \"Casa Duomo\",\n      \"internalName\": \"MIL-001\",\n      \"internalCode\": \"MIL-001\",\n      \"status\": \"ONBOARDING\",\n      \"lifecycleStage\": \"live\",\n      \"address\": \"Via Torino 1\",\n      \"city\": \"Milano\",\n      \"postalCode\": \"20123\",\n      \"country\": \"IT\",\n      \"latitude\": 45.4642,\n      \"longitude\": 9.19,\n      \"description\": \"string\",\n      \"houseRules\": \"string\",\n      \"propertyType\": \"apartment\",\n      \"timezone\": \"Europe/Rome\",\n      \"bedrooms\": 2,\n      \"bathrooms\": 1.5,\n      \"beds\": 3,\n      \"kitchens\": 1,\n      \"livingRooms\": 1,\n      \"hallways\": 1,\n      \"terraces\": 0,\n      \"balconies\": 1,\n      \"gardens\": 0,\n      \"minGuests\": 1,\n      \"maxGuests\": 4,\n      \"squareMeters\": 72.5,\n      \"floor\": 3,\n      \"hasElevator\": true,\n      \"hasParking\": false,\n      \"minNights\": 2,\n      \"maxNights\": 30,\n      \"cleaningFee\": 85,\n      \"managementFee\": 18,\n      \"dealValue\": 250000,\n      \"checkinInstructions\": \"string\",\n      \"checkoutInstructions\": \"string\",\n      \"parkingInstructions\": \"string\",\n      \"accessCode\": \"string\",\n      \"checkinVideoUrl\": \"string\",\n      \"intercomName\": \"string\",\n      \"checkinTime\": \"15:00\",\n      \"checkinTimeEnd\": \"21:00\",\n      \"checkoutTime\": \"10:00\",\n      \"supportPhone\": \"string\",\n      \"wifiName\": \"string\",\n      \"wifiPassword\": \"string\",\n      \"lockProvider\": \"string\",\n      \"lockDeviceId\": \"string\",\n      \"hasSmartLock\": false,\n      \"shellyDeviceId\": \"string\",\n      \"cleaningInstructions\": \"string\",\n      \"propertyLicenseNumber\": \"string\",\n      \"defaultWarehouseId\": \"11111111-1111-4111-8111-111111111111\",\n      \"customFields\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"createdAt\": \"2026-05-22T17:00:00.000Z\",\n      \"updatedAt\": \"2026-05-22T17:00:00.000Z\",\n      \"manualConfig\": {}\n    },\n    {\n      \"id\": \"11111111-1111-4111-8111-111111111111\",\n      \"workspaceId\": \"haven-vacation-rentals\",\n      \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n      \"name\": \"Casa Duomo\",\n      \"internalName\": \"MIL-001\",\n      \"internalCode\": \"MIL-001\",\n      \"status\": \"PROSPECT\",\n      \"lifecycleStage\": \"live\",\n      \"address\": \"Via Torino 1\",\n      \"city\": \"Milano\",\n      \"postalCode\": \"20123\",\n      \"country\": \"IT\",\n      \"latitude\": 45.4642,\n      \"longitude\": 9.19,\n      \"description\": \"string\",\n      \"houseRules\": \"string\",\n      \"propertyType\": \"apartment\",\n      \"timezone\": \"Europe/Rome\",\n      \"bedrooms\": 2,\n      \"bathrooms\": 1.5,\n      \"beds\": 3,\n      \"kitchens\": 1,\n      \"livingRooms\": 1,\n      \"hallways\": 1,\n      \"terraces\": 0,\n      \"balconies\": 1,\n      \"gardens\": 0,\n      \"minGuests\": 1,\n      \"maxGuests\": 4,\n      \"squareMeters\": 72.5,\n      \"floor\": 3,\n      \"hasElevator\": true,\n      \"hasParking\": false,\n      \"minNights\": 2,\n      \"maxNights\": 30,\n      \"cleaningFee\": 85,\n      \"managementFee\": 18,\n      \"dealValue\": 250000,\n      \"checkinInstructions\": \"string\",\n      \"checkoutInstructions\": \"string\",\n      \"parkingInstructions\": \"string\",\n      \"accessCode\": \"string\",\n      \"checkinVideoUrl\": \"string\",\n      \"intercomName\": \"string\",\n      \"checkinTime\": \"15:00\",\n      \"checkinTimeEnd\": \"21:00\",\n      \"checkoutTime\": \"10:00\",\n      \"supportPhone\": \"string\",\n      \"wifiName\": \"string\",\n      \"wifiPassword\": \"string\",\n      \"lockProvider\": \"string\",\n      \"lockDeviceId\": \"string\",\n      \"hasSmartLock\": false,\n      \"shellyDeviceId\": \"string\",\n      \"cleaningInstructions\": \"string\",\n      \"propertyLicenseNumber\": \"string\",\n      \"defaultWarehouseId\": \"11111111-1111-4111-8111-111111111111\",\n      \"customFields\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"createdAt\": \"2026-05-22T17:00:00.000Z\",\n      \"updatedAt\": \"2026-05-22T17:00:00.000Z\",\n      \"manualConfig\": {}\n    }\n  ],\n  \"pagination\": {\n    \"total\": 125,\n    \"limit\": 50,\n    \"offset\": 0,\n    \"hasMore\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96ee7ca2-8133-4cbd-8c7f-49cb45e975d6",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3493b197-f3ee-4f25-a099-8e227e976cb7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc6da729-9f9b-416e-8e81-0f1d498caae4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91cfc53e-2765-49d3-9a06-743c63c2e920",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4859dd02-f833-4409-ab32-3130fc5d2184",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7d0814f-52bf-4c01-9820-0704070d18b5",
+              "name": "Unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c83c069-c6a5-40b0-9f24-4c4b3727ab27",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "101c995b-2055-4630-b834-0d2fbb244d84",
+          "name": "Create a property",
+          "request": {
+            "name": "Create a property",
+            "description": {
+              "content": "Creates a Trellis property in the authenticated workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"sourceIntegrationId\": \"<string,null-uuid>\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"<string>\",\n  \"lifecycleStage\": \"<string,null>\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "767d8e6f-7a3c-4289-8cb0-7a670464c8f9",
+              "name": "The created property.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Casa Duomo\",\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"INACTIVE\",\n  \"lifecycleStage\": \"ONBOARDING\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"property\": {\n    \"id\": \"11111111-1111-4111-8111-111111111111\",\n    \"workspaceId\": \"haven-vacation-rentals\",\n    \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n    \"name\": \"Casa Duomo\",\n    \"internalName\": \"MIL-001\",\n    \"internalCode\": \"MIL-001\",\n    \"status\": \"AT_RISK\",\n    \"lifecycleStage\": \"live\",\n    \"address\": \"Via Torino 1\",\n    \"city\": \"Milano\",\n    \"postalCode\": \"20123\",\n    \"country\": \"IT\",\n    \"latitude\": 45.4642,\n    \"longitude\": 9.19,\n    \"description\": \"string\",\n    \"houseRules\": \"string\",\n    \"propertyType\": \"apartment\",\n    \"timezone\": \"Europe/Rome\",\n    \"bedrooms\": 2,\n    \"bathrooms\": 1.5,\n    \"beds\": 3,\n    \"kitchens\": 1,\n    \"livingRooms\": 1,\n    \"hallways\": 1,\n    \"terraces\": 0,\n    \"balconies\": 1,\n    \"gardens\": 0,\n    \"minGuests\": 1,\n    \"maxGuests\": 4,\n    \"squareMeters\": 72.5,\n    \"floor\": 3,\n    \"hasElevator\": true,\n    \"hasParking\": false,\n    \"minNights\": 2,\n    \"maxNights\": 30,\n    \"cleaningFee\": 85,\n    \"managementFee\": 18,\n    \"dealValue\": 250000,\n    \"checkinInstructions\": \"string\",\n    \"checkoutInstructions\": \"string\",\n    \"parkingInstructions\": \"string\",\n    \"accessCode\": \"string\",\n    \"checkinVideoUrl\": \"string\",\n    \"intercomName\": \"string\",\n    \"checkinTime\": \"15:00\",\n    \"checkinTimeEnd\": \"21:00\",\n    \"checkoutTime\": \"10:00\",\n    \"supportPhone\": \"string\",\n    \"wifiName\": \"string\",\n    \"wifiPassword\": \"string\",\n    \"lockProvider\": \"string\",\n    \"lockDeviceId\": \"string\",\n    \"hasSmartLock\": false,\n    \"shellyDeviceId\": \"string\",\n    \"cleaningInstructions\": \"string\",\n    \"propertyLicenseNumber\": \"string\",\n    \"defaultWarehouseId\": \"11111111-1111-4111-8111-111111111111\",\n    \"customFields\": {\n      \"key_0\": {}\n    },\n    \"createdAt\": \"2026-05-22T17:00:00.000Z\",\n    \"updatedAt\": \"2026-05-22T17:00:00.000Z\",\n    \"manualConfig\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57404641-3fc4-47d6-8ac1-4543c169a225",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Casa Duomo\",\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"INACTIVE\",\n  \"lifecycleStage\": \"ONBOARDING\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ceebd9f-252b-4138-93c3-62c399cf9856",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Casa Duomo\",\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"INACTIVE\",\n  \"lifecycleStage\": \"ONBOARDING\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41db9c77-6438-494a-9b30-d440c2717c5c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Casa Duomo\",\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"INACTIVE\",\n  \"lifecycleStage\": \"ONBOARDING\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4200e7d-ce1b-467d-baf0-44f7490cfd71",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Casa Duomo\",\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"INACTIVE\",\n  \"lifecycleStage\": \"ONBOARDING\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0ebf16f-62b6-4615-bdad-9d718a27065c",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Casa Duomo\",\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"INACTIVE\",\n  \"lifecycleStage\": \"ONBOARDING\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad452f67-37a8-411c-9e71-ffa499ea75eb",
+              "name": "Unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Casa Duomo\",\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"INACTIVE\",\n  \"lifecycleStage\": \"ONBOARDING\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e99e172a-b1f0-4e06-848e-b3d6fb29fb32",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Casa Duomo\",\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"INACTIVE\",\n  \"lifecycleStage\": \"ONBOARDING\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20919a2c-d46a-41b7-af72-430c99fdfad2",
+          "name": "Get a property",
+          "request": {
+            "name": "Get a property",
+            "description": {
+              "content": "Returns one non-deleted Trellis property by id within the authenticated workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "properties",
+                ":propertyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da35bad2-24cc-4a38-bb5d-0168d917d812",
+              "name": "The requested property.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"property\": {\n    \"id\": \"11111111-1111-4111-8111-111111111111\",\n    \"workspaceId\": \"haven-vacation-rentals\",\n    \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n    \"name\": \"Casa Duomo\",\n    \"internalName\": \"MIL-001\",\n    \"internalCode\": \"MIL-001\",\n    \"status\": \"AT_RISK\",\n    \"lifecycleStage\": \"live\",\n    \"address\": \"Via Torino 1\",\n    \"city\": \"Milano\",\n    \"postalCode\": \"20123\",\n    \"country\": \"IT\",\n    \"latitude\": 45.4642,\n    \"longitude\": 9.19,\n    \"description\": \"string\",\n    \"houseRules\": \"string\",\n    \"propertyType\": \"apartment\",\n    \"timezone\": \"Europe/Rome\",\n    \"bedrooms\": 2,\n    \"bathrooms\": 1.5,\n    \"beds\": 3,\n    \"kitchens\": 1,\n    \"livingRooms\": 1,\n    \"hallways\": 1,\n    \"terraces\": 0,\n    \"balconies\": 1,\n    \"gardens\": 0,\n    \"minGuests\": 1,\n    \"maxGuests\": 4,\n    \"squareMeters\": 72.5,\n    \"floor\": 3,\n    \"hasElevator\": true,\n    \"hasParking\": false,\n    \"minNights\": 2,\n    \"maxNights\": 30,\n    \"cleaningFee\": 85,\n    \"managementFee\": 18,\n    \"dealValue\": 250000,\n    \"checkinInstructions\": \"string\",\n    \"checkoutInstructions\": \"string\",\n    \"parkingInstructions\": \"string\",\n    \"accessCode\": \"string\",\n    \"checkinVideoUrl\": \"string\",\n    \"intercomName\": \"string\",\n    \"checkinTime\": \"15:00\",\n    \"checkinTimeEnd\": \"21:00\",\n    \"checkoutTime\": \"10:00\",\n    \"supportPhone\": \"string\",\n    \"wifiName\": \"string\",\n    \"wifiPassword\": \"string\",\n    \"lockProvider\": \"string\",\n    \"lockDeviceId\": \"string\",\n    \"hasSmartLock\": false,\n    \"shellyDeviceId\": \"string\",\n    \"cleaningInstructions\": \"string\",\n    \"propertyLicenseNumber\": \"string\",\n    \"defaultWarehouseId\": \"11111111-1111-4111-8111-111111111111\",\n    \"customFields\": {\n      \"key_0\": {}\n    },\n    \"createdAt\": \"2026-05-22T17:00:00.000Z\",\n    \"updatedAt\": \"2026-05-22T17:00:00.000Z\",\n    \"manualConfig\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e7b1a59-1fe6-4247-b720-bc6912e28d62",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bc36820-9b45-441b-a38f-9cf2edd244cc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da7eba18-abff-436f-a60f-53a3e6187a7f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "866c9d93-7908-4a24-a6b5-923f21ccd636",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "840a92f3-bf86-4f2e-97e5-861d28bd11a1",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0359060-814e-4576-9b0e-fccbb050526c",
+              "name": "Unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cfa09a3-5038-444b-826b-7f043d0f2dc2",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69b82d06-cf34-46d2-b41b-0225207b3979",
+          "name": "Replace property fields",
+          "request": {
+            "name": "Replace property fields",
+            "description": {
+              "content": "Applies the supplied property fields using the same mutation behavior as PATCH. Omitted fields are left unchanged.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "properties",
+                ":propertyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceIntegrationId\": \"<string,null-uuid>\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"<string>\",\n  \"lifecycleStage\": \"<string,null>\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "776c0ce7-4709-44eb-b72f-604a4f316ac3",
+              "name": "The updated property.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"property\": {\n    \"id\": \"11111111-1111-4111-8111-111111111111\",\n    \"workspaceId\": \"haven-vacation-rentals\",\n    \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n    \"name\": \"Casa Duomo\",\n    \"internalName\": \"MIL-001\",\n    \"internalCode\": \"MIL-001\",\n    \"status\": \"AT_RISK\",\n    \"lifecycleStage\": \"live\",\n    \"address\": \"Via Torino 1\",\n    \"city\": \"Milano\",\n    \"postalCode\": \"20123\",\n    \"country\": \"IT\",\n    \"latitude\": 45.4642,\n    \"longitude\": 9.19,\n    \"description\": \"string\",\n    \"houseRules\": \"string\",\n    \"propertyType\": \"apartment\",\n    \"timezone\": \"Europe/Rome\",\n    \"bedrooms\": 2,\n    \"bathrooms\": 1.5,\n    \"beds\": 3,\n    \"kitchens\": 1,\n    \"livingRooms\": 1,\n    \"hallways\": 1,\n    \"terraces\": 0,\n    \"balconies\": 1,\n    \"gardens\": 0,\n    \"minGuests\": 1,\n    \"maxGuests\": 4,\n    \"squareMeters\": 72.5,\n    \"floor\": 3,\n    \"hasElevator\": true,\n    \"hasParking\": false,\n    \"minNights\": 2,\n    \"maxNights\": 30,\n    \"cleaningFee\": 85,\n    \"managementFee\": 18,\n    \"dealValue\": 250000,\n    \"checkinInstructions\": \"string\",\n    \"checkoutInstructions\": \"string\",\n    \"parkingInstructions\": \"string\",\n    \"accessCode\": \"string\",\n    \"checkinVideoUrl\": \"string\",\n    \"intercomName\": \"string\",\n    \"checkinTime\": \"15:00\",\n    \"checkinTimeEnd\": \"21:00\",\n    \"checkoutTime\": \"10:00\",\n    \"supportPhone\": \"string\",\n    \"wifiName\": \"string\",\n    \"wifiPassword\": \"string\",\n    \"lockProvider\": \"string\",\n    \"lockDeviceId\": \"string\",\n    \"hasSmartLock\": false,\n    \"shellyDeviceId\": \"string\",\n    \"cleaningInstructions\": \"string\",\n    \"propertyLicenseNumber\": \"string\",\n    \"defaultWarehouseId\": \"11111111-1111-4111-8111-111111111111\",\n    \"customFields\": {\n      \"key_0\": {}\n    },\n    \"createdAt\": \"2026-05-22T17:00:00.000Z\",\n    \"updatedAt\": \"2026-05-22T17:00:00.000Z\",\n    \"manualConfig\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68df4e81-40ef-4d00-b090-3676f66255ae",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42f3e55e-3537-40ad-8584-26b58793781b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a4e143d-b226-45e3-9ee7-9d71f11f6dc0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce1ae801-b864-4f37-b9a3-781f806f7a1d",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e6f1dd2-5407-4bec-b126-19cb793dea3f",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe377694-bc7e-4e8d-bdba-407e170876c5",
+              "name": "Unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "637fe89b-7b95-449e-9cdd-176f39aab557",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb2852d3-ad4f-4e65-9299-e4907b4df297",
+          "name": "Delete a property",
+          "request": {
+            "name": "Delete a property",
+            "description": {
+              "content": "Soft-deletes a Trellis property in the authenticated workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "properties",
+                ":propertyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c80b6379-c323-4446-9968-3e61b34b266d",
+              "name": "The property was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deleted\": true,\n  \"propertyId\": \"11111111-1111-4111-8111-111111111111\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afde994e-cb13-4bc7-a37c-e3b4fd38d64d",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c7c6ba3-b0b6-43b2-b164-087a12b47615",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "487bd3d3-5e39-42e5-949f-17f497d83933",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a1f844f-2f6e-48ed-a489-a06d12185505",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4c474b4-1dd6-4fa2-9750-13687b05d2f8",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13b74dc8-880b-4313-acb0-8f3b429634d2",
+              "name": "Unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f49c2e71-6ef5-4b5f-b41d-d1999bc3dc2f",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "682ac19d-eefb-4c23-9976-3317b50af565",
+          "name": "Update a property",
+          "request": {
+            "name": "Update a property",
+            "description": {
+              "content": "Updates a Trellis property in the authenticated workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspaceId",
+                "properties",
+                ":propertyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "propertyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceIntegrationId\": \"<string,null-uuid>\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"<string>\",\n  \"lifecycleStage\": \"<string,null>\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06cf8865-6f3b-4daf-9a46-bf3c54e53cc5",
+              "name": "The updated property.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"property\": {\n    \"id\": \"11111111-1111-4111-8111-111111111111\",\n    \"workspaceId\": \"haven-vacation-rentals\",\n    \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n    \"name\": \"Casa Duomo\",\n    \"internalName\": \"MIL-001\",\n    \"internalCode\": \"MIL-001\",\n    \"status\": \"AT_RISK\",\n    \"lifecycleStage\": \"live\",\n    \"address\": \"Via Torino 1\",\n    \"city\": \"Milano\",\n    \"postalCode\": \"20123\",\n    \"country\": \"IT\",\n    \"latitude\": 45.4642,\n    \"longitude\": 9.19,\n    \"description\": \"string\",\n    \"houseRules\": \"string\",\n    \"propertyType\": \"apartment\",\n    \"timezone\": \"Europe/Rome\",\n    \"bedrooms\": 2,\n    \"bathrooms\": 1.5,\n    \"beds\": 3,\n    \"kitchens\": 1,\n    \"livingRooms\": 1,\n    \"hallways\": 1,\n    \"terraces\": 0,\n    \"balconies\": 1,\n    \"gardens\": 0,\n    \"minGuests\": 1,\n    \"maxGuests\": 4,\n    \"squareMeters\": 72.5,\n    \"floor\": 3,\n    \"hasElevator\": true,\n    \"hasParking\": false,\n    \"minNights\": 2,\n    \"maxNights\": 30,\n    \"cleaningFee\": 85,\n    \"managementFee\": 18,\n    \"dealValue\": 250000,\n    \"checkinInstructions\": \"string\",\n    \"checkoutInstructions\": \"string\",\n    \"parkingInstructions\": \"string\",\n    \"accessCode\": \"string\",\n    \"checkinVideoUrl\": \"string\",\n    \"intercomName\": \"string\",\n    \"checkinTime\": \"15:00\",\n    \"checkinTimeEnd\": \"21:00\",\n    \"checkoutTime\": \"10:00\",\n    \"supportPhone\": \"string\",\n    \"wifiName\": \"string\",\n    \"wifiPassword\": \"string\",\n    \"lockProvider\": \"string\",\n    \"lockDeviceId\": \"string\",\n    \"hasSmartLock\": false,\n    \"shellyDeviceId\": \"string\",\n    \"cleaningInstructions\": \"string\",\n    \"propertyLicenseNumber\": \"string\",\n    \"defaultWarehouseId\": \"11111111-1111-4111-8111-111111111111\",\n    \"customFields\": {\n      \"key_0\": {}\n    },\n    \"createdAt\": \"2026-05-22T17:00:00.000Z\",\n    \"updatedAt\": \"2026-05-22T17:00:00.000Z\",\n    \"manualConfig\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6bb5550-dc44-4d16-bca7-353d730c8986",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4332b544-8f4c-4648-8d46-245a1996df2e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b8267dc-aa9e-4940-aea6-e345c5a3435e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "324f110f-eb9b-4020-80ec-d04b6b5aeb0b",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9590543a-466d-462a-9dfa-28620b93b12c",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52ef3c3e-8f7b-4e3a-886c-abe394992fa0",
+              "name": "Unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19a2467b-ef0a-4394-b1dc-5098aad29b91",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspaceId",
+                    "properties",
+                    ":propertyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "propertyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceIntegrationId\": \"11111111-1111-4111-8111-111111111111\",\n  \"internalName\": \"<string,null>\",\n  \"internalCode\": \"<string,null>\",\n  \"status\": \"PROSPECT\",\n  \"lifecycleStage\": \"INACTIVE\",\n  \"address\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"postalCode\": \"<string,null>\",\n  \"country\": \"<string,null>\",\n  \"latitude\": \"<number,null>\",\n  \"longitude\": \"<number,null>\",\n  \"description\": \"<string,null>\",\n  \"houseRules\": \"<string,null>\",\n  \"propertyType\": \"<string,null>\",\n  \"timezone\": \"<string,null>\",\n  \"bedrooms\": \"<integer,null>\",\n  \"bathrooms\": \"<number,null>\",\n  \"beds\": \"<integer,null>\",\n  \"kitchens\": \"<integer,null>\",\n  \"livingRooms\": \"<integer,null>\",\n  \"hallways\": \"<integer,null>\",\n  \"terraces\": \"<integer,null>\",\n  \"balconies\": \"<integer,null>\",\n  \"gardens\": \"<integer,null>\",\n  \"minGuests\": \"<integer,null>\",\n  \"maxGuests\": \"<integer,null>\",\n  \"squareMeters\": \"<number,null>\",\n  \"floor\": \"<integer,null>\",\n  \"hasElevator\": \"<boolean>\",\n  \"hasParking\": \"<boolean>\",\n  \"minNights\": \"<integer,null>\",\n  \"maxNights\": \"<integer,null>\",\n  \"cleaningFee\": \"<number,null>\",\n  \"managementFee\": \"<number,null>\",\n  \"dealValue\": \"<number,null>\",\n  \"checkinInstructions\": \"<string,null>\",\n  \"checkoutInstructions\": \"<string,null>\",\n  \"parkingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string,null>\",\n  \"checkinVideoUrl\": \"<string,null>\",\n  \"intercomName\": \"<string,null>\",\n  \"checkinTime\": \"<string,null>\",\n  \"checkinTimeEnd\": \"<string,null>\",\n  \"checkoutTime\": \"<string,null>\",\n  \"supportPhone\": \"<string,null>\",\n  \"wifiName\": \"<string,null>\",\n  \"wifiPassword\": \"<string,null>\",\n  \"lockProvider\": \"<string,null>\",\n  \"lockDeviceId\": \"<string,null>\",\n  \"hasSmartLock\": \"<boolean>\",\n  \"shellyDeviceId\": \"<string,null>\",\n  \"manualConfig\": \"\",\n  \"cleaningInstructions\": \"<string,null>\",\n  \"propertyLicenseNumber\": \"<string,null>\",\n  \"customFields\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "47b897b0-e19a-41c8-a643-ee1b9c99808d",
+    "name": "Trellis Public API v1 properties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public, versioned REST contracts for workspace-scoped Trellis tasks and properties. Authenticate with an existing workspace API key.",
+      "type": "text/plain"
+    }
+  }
+}

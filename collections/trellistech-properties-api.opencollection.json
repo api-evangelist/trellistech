@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellis Public API v1 properties API",
+    "version": "1.4.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/workspaces/:workspaceId/properties",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter properties by lifecycle status."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Case-insensitive search over name, internal code, and city."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns non-deleted Trellis properties for the authenticated workspace. Use `status` or `q` to narrow the result set."
+        },
+        {
+          "info": {
+            "name": "Create a property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/workspaces/:workspaceId/properties",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a Trellis property in the authenticated workspace."
+        },
+        {
+          "info": {
+            "name": "Get a property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/workspaces/:workspaceId/properties/:propertyId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns one non-deleted Trellis property by id within the authenticated workspace."
+        },
+        {
+          "info": {
+            "name": "Replace property fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/workspaces/:workspaceId/properties/:propertyId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Applies the supplied property fields using the same mutation behavior as PATCH. Omitted fields are left unchanged."
+        },
+        {
+          "info": {
+            "name": "Update a property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/v1/workspaces/:workspaceId/properties/:propertyId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a Trellis property in the authenticated workspace."
+        },
+        {
+          "info": {
+            "name": "Delete a property",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/workspaces/:workspaceId/properties/:propertyId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Soft-deletes a Trellis property in the authenticated workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,282 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellis Public API v1 properties tasks API",
+    "version": "1.4.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/workspaces/:workspaceId/tasks",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter tasks by computed Trellis status."
+              },
+              {
+                "name": "priority",
+                "value": "",
+                "type": "query",
+                "description": "Filter tasks by priority."
+              },
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "query",
+                "description": "Filter tasks for a property."
+              },
+              {
+                "name": "departmentId",
+                "value": "",
+                "type": "query",
+                "description": "Filter tasks assigned to a department."
+              },
+              {
+                "name": "scheduledFrom",
+                "value": "",
+                "type": "query",
+                "description": "Include tasks scheduled on or after this date."
+              },
+              {
+                "name": "scheduledTo",
+                "value": "",
+                "type": "query",
+                "description": "Include tasks scheduled on or before this date."
+              },
+              {
+                "name": "scheduledDate",
+                "value": "",
+                "type": "query",
+                "description": "Include tasks scheduled exactly on this date. When present, this overrides scheduledFrom/scheduledTo."
+              },
+              {
+                "name": "departmentKind",
+                "value": "",
+                "type": "query",
+                "description": "Filter task departments by a stable public kind. Currently supports field_ops."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated related resources to embed in each task. Supported values: costItems, assignees."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Case-insensitive search over title, description, and short id."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns non-deleted Trellis tasks for the authenticated workspace. Use filters for status, priority, property, department, schedule window, or text search."
+        },
+        {
+          "info": {
+            "name": "Create a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/workspaces/:workspaceId/tasks",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a Trellis task in the authenticated workspace and runs the normal task side effects."
+        },
+        {
+          "info": {
+            "name": "List daily work orders and costs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/workspaces/:workspaceId/tasks/daily-work-orders",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Local calendar date to export, formatted as YYYY-MM-DD."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns scheduled work orders for one day in the authenticated workspace, including task cost totals, cost item rows, property, department, and scoped assignee names."
+        },
+        {
+          "info": {
+            "name": "Get a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/workspaces/:workspaceId/tasks/:taskId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns one non-deleted Trellis task by id within the authenticated workspace."
+        },
+        {
+          "info": {
+            "name": "Replace task fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/workspaces/:workspaceId/tasks/:taskId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Applies the supplied task fields using the same mutation behavior as PATCH. Omitted fields are left unchanged."
+        },
+        {
+          "info": {
+            "name": "Update a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/v1/workspaces/:workspaceId/tasks/:taskId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a Trellis task in the authenticated workspace and runs the normal task side effects."
+        },
+        {
+          "info": {
+            "name": "Delete a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/workspaces/:workspaceId/tasks/:taskId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Soft-deletes a Trellis task in the authenticated workspace and runs the normal task side effects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

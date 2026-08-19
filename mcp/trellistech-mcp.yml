@@ -4,11 +4,9 @@ source: https://docs.trellistech.com/api-reference/mcp-server
 name: Trellis MCP Server
 status: published
 status_raw: official
-description: >-
-  Official Trellis Model Context Protocol server. Lets external AI clients use Trellis
-  operational tools through a standard MCP connection - a hosted Streamable HTTP endpoint,
-  or a stdio bridge from the @trellistech/mcp-server npm package for clients that do not
-  support Streamable HTTP.
+description: Official Trellis Model Context Protocol server. Lets external AI clients use Trellis operational
+  tools through a standard MCP connection - a hosted Streamable HTTP endpoint, or a stdio bridge from
+  the @trellistech/mcp-server npm package for clients that do not support Streamable HTTP.
 transports:
 - type: streamable-http
   hosted: true
@@ -24,11 +22,9 @@ authentication:
   scheme: bearer
   credential: Workspace-scoped Trellis API key (trls_...) created in Settings > Developer
   detail: authentication/trellistech-authentication.yml
-workspace_scoping: >-
-  Every tool accepts an optional workspace_id argument. Left empty it uses the workspace
-  the API key was issued for; if provided it must match the key's workspace or the call is
-  rejected. Operate on multiple workspaces by issuing one key per workspace and connecting
-  each as a separate MCP server.
+workspace_scoping: Every tool accepts an optional workspace_id argument. Left empty it uses the workspace
+  the API key was issued for; if provided it must match the key's workspace or the call is rejected. Operate
+  on multiple workspaces by issuing one key per workspace and connecting each as a separate MCP server.
 install:
 - client: claude-code
   command: npx -y @trellistech/mcp-server install claude-code
@@ -48,9 +44,8 @@ tool_catalog:
   - workforce
   - knowledge base
   - automations
-  note: >-
-    Catalog mirrors Trellis operational read tools and gated write tools. Exact tool
-    list is enumerated at runtime by the hosted server; not statically published.
+  note: Catalog mirrors Trellis operational read tools and gated write tools. Exact tool list is enumerated
+    at runtime by the hosted server; not statically published.
 resources:
 - uri: trellis://agents/{agent_id}/profile
   description: Agent profile and configuration
@@ -72,3 +67,8 @@ package:
   version: 0.1.0
   license: MIT
   detail: packages/trellistech-packages.yml
+deployment:
+  mode: local-stdio
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census
