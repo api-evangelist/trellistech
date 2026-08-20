@@ -39,6 +39,15 @@ tags:
 - Vacation Rentals
 - Short-Term Rentals
 - AI Agents
+- Hospitality
+- Task Management
+- MCP
+tags_raw:
+- Company
+- Property Management
+- Vacation Rentals
+- Short-Term Rentals
+- AI Agents
 - Operations
 - Hospitality
 - Task Management
@@ -55,6 +64,8 @@ apis:
   humanURL: https://docs.trellistech.com/api-reference/introduction
   baseURL: https://app.trellistech.com/api/v1
   tags:
+  - Properties
+  tags_raw:
   - properties
   properties:
   - type: OpenAPI
@@ -79,6 +90,8 @@ apis:
   humanURL: https://docs.trellistech.com/api-reference/introduction
   baseURL: https://app.trellistech.com/api/v1
   tags:
+  - Task
+  tags_raw:
   - tasks
   properties:
   - type: OpenAPI
