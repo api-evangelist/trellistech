@@ -11,6 +11,18 @@ description: >-
   write tools to any MCP-compatible AI client, and connectors for property and finance
   systems including Guesty, Hostaway, Breezeway, Calry, Krossbooking, and Ramp.
 url: https://raw.githubusercontent.com/api-evangelist/trellistech/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
