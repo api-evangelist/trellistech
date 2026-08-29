@@ -123,6 +123,9 @@ apis:
   - type: APIReference
     url: https://docs.trellistech.com/api-reference/introduction
 common:
+- type: CapabilityMap
+  url: capabilities/trellistech-capability-edges.yml
+  name: Trellis Business Capability Map
 - type: Overlay
   url: overlays/trellistech-public-api-overlay.yaml
 - type: LLMsTxt

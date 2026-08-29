@@ -1,0 +1,26 @@
+slug: trellistech
+provider: Trellis
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Travel & Hospitality
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: tasks
+  spec_file: trellistech-tasks-api-openapi.yml
+  capability_id: BC-4060
+  capability_id_l1: BC-4060
+  capability_name: Property Operations Management
+  confidence: 0.7
+  evidence: '"List daily work orders and costs"; schemas TaskDepartment, DailyWorkOrder, TaskAssignee,
+    VendorAcceptanceStatus, TaskCostItem'
+  reason: Field-team work orders assigned by department with vendor acceptance and cost tracking at rental
+    properties — day-to-day property operations (housekeeping/maintenance dispatch). Left at L1 because
+    tasks span departments rather than naming one operational discipline.
