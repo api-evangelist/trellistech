@@ -72,7 +72,7 @@ maintainers:
   email: info@apis.io
 apis:
 - aid: trellistech:trellistech-properties-api
-  name: Trellis properties API
+  name: Trellis Properties API
   description: Trellis property contracts generated from Hono/Zod schemas.
   humanURL: https://docs.trellistech.com/api-reference/introduction
   baseURL: https://app.trellistech.com/api/v1
@@ -98,7 +98,7 @@ apis:
   - type: APIReference
     url: https://docs.trellistech.com/api-reference/introduction
 - aid: trellistech:trellistech-tasks-api
-  name: Trellis tasks API
+  name: Trellis Tasks API
   description: Trellis task contracts generated from Hono/Zod schemas.
   humanURL: https://docs.trellistech.com/api-reference/introduction
   baseURL: https://app.trellistech.com/api/v1

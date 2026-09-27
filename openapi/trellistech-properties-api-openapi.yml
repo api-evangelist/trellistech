@@ -711,223 +711,19 @@ components:
         name:
           type: string
           minLength: 1
-    CreatePropertyRequest:
-      type: object
-      properties:
-        sourceIntegrationId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        internalName:
-          type:
-          - string
-          - 'null'
-        internalCode:
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/PropertyStatus'
-        lifecycleStage:
-          $ref: '#/components/schemas/PropertyLifecycleStage'
-        address:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        postalCode:
-          type:
-          - string
-          - 'null'
-        country:
-          type:
-          - string
-          - 'null'
-        latitude:
-          type:
-          - number
-          - 'null'
-        longitude:
-          type:
-          - number
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        houseRules:
-          type:
-          - string
-          - 'null'
-        propertyType:
-          type:
-          - string
-          - 'null'
-        timezone:
-          type:
-          - string
-          - 'null'
-        bedrooms:
-          type:
-          - integer
-          - 'null'
-        bathrooms:
-          type:
-          - number
-          - 'null'
-        beds:
-          type:
-          - integer
-          - 'null'
-        kitchens:
-          type:
-          - integer
-          - 'null'
-        livingRooms:
-          type:
-          - integer
-          - 'null'
-        hallways:
-          type:
-          - integer
-          - 'null'
-        terraces:
-          type:
-          - integer
-          - 'null'
-        balconies:
-          type:
-          - integer
-          - 'null'
-        gardens:
-          type:
-          - integer
-          - 'null'
-        minGuests:
-          type:
-          - integer
-          - 'null'
-        maxGuests:
-          type:
-          - integer
-          - 'null'
-        squareMeters:
-          type:
-          - number
-          - 'null'
-        floor:
-          type:
-          - integer
-          - 'null'
-        hasElevator:
-          type: boolean
-        hasParking:
-          type: boolean
-        minNights:
-          type:
-          - integer
-          - 'null'
-        maxNights:
-          type:
-          - integer
-          - 'null'
-        cleaningFee:
-          type:
-          - number
-          - 'null'
-        managementFee:
-          type:
-          - number
-          - 'null'
-        dealValue:
-          type:
-          - number
-          - 'null'
-        checkinInstructions:
-          type:
-          - string
-          - 'null'
-        checkoutInstructions:
-          type:
-          - string
-          - 'null'
-        parkingInstructions:
-          type:
-          - string
-          - 'null'
-        accessCode:
-          type:
-          - string
-          - 'null'
-        checkinVideoUrl:
-          type:
-          - string
-          - 'null'
-        intercomName:
-          type:
-          - string
-          - 'null'
-        checkinTime:
-          type:
-          - string
-          - 'null'
-        checkinTimeEnd:
-          type:
-          - string
-          - 'null'
-        checkoutTime:
-          type:
-          - string
-          - 'null'
-        supportPhone:
-          type:
-          - string
-          - 'null'
-        wifiName:
-          type:
-          - string
-          - 'null'
-        wifiPassword:
-          type:
-          - string
-          - 'null'
-        lockProvider:
-          type:
-          - string
-          - 'null'
-        lockDeviceId:
-          type:
-          - string
-          - 'null'
-        hasSmartLock:
-          type: boolean
-        shellyDeviceId:
-          type:
-          - string
-          - 'null'
-        manualConfig: {}
-        cleaningInstructions:
-          type:
-          - string
-          - 'null'
-        propertyLicenseNumber:
-          type:
-          - string
-          - 'null'
-        customFields:
-          type: object
-          additionalProperties: {}
-        name:
-          type: string
-          minLength: 1
-          example: Casa Duomo
-      required:
-      - name
+    PropertyLifecycleStage:
+      type:
+      - string
+      - 'null'
+      enum:
+      - PROSPECT
+      - ONBOARDING
+      - ACTIVE
+      - AT_RISK
+      - PAUSED
+      - INACTIVE
+      - CHURNED
+      - null
     GetPropertyResponse:
       type: object
       properties:
@@ -958,19 +754,28 @@ components:
       - limit
       - offset
       - hasMore
-    PropertyLifecycleStage:
-      type:
-      - string
-      - 'null'
-      enum:
-      - PROSPECT
-      - ONBOARDING
-      - ACTIVE
-      - AT_RISK
-      - PAUSED
-      - INACTIVE
-      - CHURNED
-      - null
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        details: {}
+      required:
+      - error
+    ListPropertiesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - items
+      - pagination
     Property:
       type: object
       properties:
@@ -1315,18 +1120,6 @@ components:
       - ACTIVE
       - AT_RISK
       - INACTIVE
-    ListPropertiesResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
-      required:
-      - items
-      - pagination
     DeletePropertyResponse:
       type: object
       properties:
@@ -1340,16 +1133,6 @@ components:
       required:
       - deleted
       - propertyId
-    ApiError:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-        details: {}
-      required:
-      - error
     MutatePropertyResponse:
       type: object
       properties:
@@ -1357,6 +1140,223 @@ components:
           $ref: '#/components/schemas/Property'
       required:
       - property
+    CreatePropertyRequest:
+      type: object
+      properties:
+        sourceIntegrationId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        internalName:
+          type:
+          - string
+          - 'null'
+        internalCode:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/PropertyStatus'
+        lifecycleStage:
+          $ref: '#/components/schemas/PropertyLifecycleStage'
+        address:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        postalCode:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type:
+          - number
+          - 'null'
+        longitude:
+          type:
+          - number
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        houseRules:
+          type:
+          - string
+          - 'null'
+        propertyType:
+          type:
+          - string
+          - 'null'
+        timezone:
+          type:
+          - string
+          - 'null'
+        bedrooms:
+          type:
+          - integer
+          - 'null'
+        bathrooms:
+          type:
+          - number
+          - 'null'
+        beds:
+          type:
+          - integer
+          - 'null'
+        kitchens:
+          type:
+          - integer
+          - 'null'
+        livingRooms:
+          type:
+          - integer
+          - 'null'
+        hallways:
+          type:
+          - integer
+          - 'null'
+        terraces:
+          type:
+          - integer
+          - 'null'
+        balconies:
+          type:
+          - integer
+          - 'null'
+        gardens:
+          type:
+          - integer
+          - 'null'
+        minGuests:
+          type:
+          - integer
+          - 'null'
+        maxGuests:
+          type:
+          - integer
+          - 'null'
+        squareMeters:
+          type:
+          - number
+          - 'null'
+        floor:
+          type:
+          - integer
+          - 'null'
+        hasElevator:
+          type: boolean
+        hasParking:
+          type: boolean
+        minNights:
+          type:
+          - integer
+          - 'null'
+        maxNights:
+          type:
+          - integer
+          - 'null'
+        cleaningFee:
+          type:
+          - number
+          - 'null'
+        managementFee:
+          type:
+          - number
+          - 'null'
+        dealValue:
+          type:
+          - number
+          - 'null'
+        checkinInstructions:
+          type:
+          - string
+          - 'null'
+        checkoutInstructions:
+          type:
+          - string
+          - 'null'
+        parkingInstructions:
+          type:
+          - string
+          - 'null'
+        accessCode:
+          type:
+          - string
+          - 'null'
+        checkinVideoUrl:
+          type:
+          - string
+          - 'null'
+        intercomName:
+          type:
+          - string
+          - 'null'
+        checkinTime:
+          type:
+          - string
+          - 'null'
+        checkinTimeEnd:
+          type:
+          - string
+          - 'null'
+        checkoutTime:
+          type:
+          - string
+          - 'null'
+        supportPhone:
+          type:
+          - string
+          - 'null'
+        wifiName:
+          type:
+          - string
+          - 'null'
+        wifiPassword:
+          type:
+          - string
+          - 'null'
+        lockProvider:
+          type:
+          - string
+          - 'null'
+        lockDeviceId:
+          type:
+          - string
+          - 'null'
+        hasSmartLock:
+          type: boolean
+        shellyDeviceId:
+          type:
+          - string
+          - 'null'
+        manualConfig: {}
+        cleaningInstructions:
+          type:
+          - string
+          - 'null'
+        propertyLicenseNumber:
+          type:
+          - string
+          - 'null'
+        customFields:
+          type: object
+          additionalProperties: {}
+        name:
+          type: string
+          minLength: 1
+          example: Casa Duomo
+      required:
+      - name
   securitySchemes:
     WorkspaceApiKey:
       type: http
