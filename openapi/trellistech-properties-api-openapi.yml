@@ -520,26 +520,6 @@ components:
       - limit
       - offset
       - hasMore
-    DeletePropertyResponse:
-      type: object
-      properties:
-        deleted:
-          type: boolean
-          example: true
-        propertyId:
-          type: string
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-      required:
-      - deleted
-      - propertyId
-    GetPropertyResponse:
-      type: object
-      properties:
-        property:
-          $ref: '#/components/schemas/Property'
-      required:
-      - property
     Property:
       type: object
       properties:
@@ -876,13 +856,14 @@ components:
       - customFields
       - createdAt
       - updatedAt
-    MutatePropertyResponse:
-      type: object
-      properties:
-        property:
-          $ref: '#/components/schemas/Property'
-      required:
-      - property
+    PropertyStatus:
+      type: string
+      enum:
+      - PROSPECT
+      - ONBOARDING
+      - ACTIVE
+      - AT_RISK
+      - INACTIVE
     PropertyLifecycleStage:
       type:
       - string
@@ -896,26 +877,26 @@ components:
       - INACTIVE
       - CHURNED
       - null
-    ListPropertiesResponse:
+    MutatePropertyResponse:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
+        property:
+          $ref: '#/components/schemas/Property'
       required:
-      - items
-      - pagination
-    PropertyStatus:
-      type: string
-      enum:
-      - PROSPECT
-      - ONBOARDING
-      - ACTIVE
-      - AT_RISK
-      - INACTIVE
+      - property
+    DeletePropertyResponse:
+      type: object
+      properties:
+        deleted:
+          type: boolean
+          example: true
+        propertyId:
+          type: string
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+      required:
+      - deleted
+      - propertyId
     CreatePropertyRequest:
       type: object
       properties:
@@ -1133,16 +1114,6 @@ components:
           example: Casa Duomo
       required:
       - name
-    ApiError:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-        details: {}
-      required:
-      - error
     UpdatePropertyRequest:
       type: object
       properties:
@@ -1357,6 +1328,35 @@ components:
         name:
           type: string
           minLength: 1
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        details: {}
+      required:
+      - error
+    GetPropertyResponse:
+      type: object
+      properties:
+        property:
+          $ref: '#/components/schemas/Property'
+      required:
+      - property
+    ListPropertiesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - items
+      - pagination
   securitySchemes:
     WorkspaceApiKey:
       type: http
