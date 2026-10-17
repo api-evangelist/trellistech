@@ -650,100 +650,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DeleteTaskResponse:
-      type: object
-      properties:
-        deleted:
-          type: boolean
-          example: true
-        taskId:
-          type: string
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-      required:
-      - deleted
-      - taskId
-    MutateTaskResponse:
-      type: object
-      properties:
-        task:
-          $ref: '#/components/schemas/Task'
-      required:
-      - task
-    DailyWorkOrdersResponse:
-      type: object
-      properties:
-        workspaceId:
-          type: string
-          minLength: 1
-          example: haven-vacation-rentals
-        date:
-          type: string
-          format: date
-          pattern: ^\d{4}-\d{2}-\d{2}$
-          example: '2026-05-22'
-        workOrderCount:
-          type: integer
-          minimum: 0
-          example: 4
-        totalCost:
-          type:
-          - number
-          - 'null'
-          description: Daily total when all costed work orders use one currency; null for mixed currency.
-          example: 148.5
-        totalCostCurrency:
-          type:
-          - string
-          - 'null'
-          description: The daily total currency, MIXED for multiple currencies, or null when no cost exists.
-          example: EUR
-        costTotalsByCurrency:
-          type: object
-          additionalProperties:
-            type: number
-          description: Daily task cost totals grouped by currency.
-          example:
-            EUR: 148.5
-        workOrders:
-          type: array
-          items:
-            $ref: '#/components/schemas/DailyWorkOrder'
-      required:
-      - workspaceId
-      - date
-      - workOrderCount
-      - totalCost
-      - totalCostCurrency
-      - costTotalsByCurrency
-      - workOrders
-    TaskStatus:
-      type: string
-      enum:
-      - OPEN
-      - CREATED
-      - DRAFT
-      - DRAFTED
-      - SCHEDULED
-      - IN_PROGRESS
-      - FINISHED
-      - CLOSED
-      - PENDING_APPROVAL
-      - REQUEST_APPROVED
-      - REQUEST_REJECTED
-      - COMPLETED
-    ListTasksResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Task'
-        pagination:
-          $ref: '#/components/schemas/PaginationMeta'
-      required:
-      - items
-      - pagination
     TaskSource:
       type: string
       enum:
@@ -756,68 +662,108 @@ components:
       - MESSAGE
       - CALL
       - MEETING_BOT
-    DailyWorkOrderCostItem:
+    ListTasksResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+      required:
+      - items
+      - pagination
+    TaskAssigneeType:
+      type: string
+      enum:
+      - USER
+      - VENDOR
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+          minimum: 0
+          example: 125
+        limit:
+          type: integer
+          exclusiveMinimum: 0
+          example: 50
+        offset:
+          type: integer
+          minimum: 0
+          example: 0
+        hasMore:
+          type: boolean
+          example: true
+      required:
+      - total
+      - limit
+      - offset
+      - hasMore
+    TaskDepartment:
       type: object
       properties:
         id:
           type: string
           format: uuid
           example: 11111111-1111-4111-8111-111111111111
-        amount:
-          type: number
-          example: 35.5
-        currency:
+        name:
           type: string
-          minLength: 1
-          example: EUR
-        description:
-          type:
-          - string
-          - 'null'
-          example: Replacement bulb and labor
-        billToType:
-          $ref: '#/components/schemas/BillToType'
-        billToId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        claimId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        categoryId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        categoryName:
-          type:
-          - string
-          - 'null'
-          example: Maintenance materials
-        notes:
-          type:
-          - string
-          - 'null'
+          example: Maintenance
+        slug:
+          type: string
+          example: maintenance
       required:
       - id
-      - amount
-      - currency
-      - description
-      - billToType
-      - billToId
-      - claimId
-      - categoryId
-      - categoryName
-      - notes
-    TaskTemplateVariables:
+      - name
+      - slug
+    ApiError:
       type: object
-      additionalProperties: {}
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        details: {}
+      required:
+      - error
+    DailyWorkOrderAssignee:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        role:
+          $ref: '#/components/schemas/AssigneeRole'
+        type:
+          $ref: '#/components/schemas/DailyWorkOrderAssigneeType'
+        userId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        vendorOrgId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        name:
+          type:
+          - string
+          - 'null'
+          example: Ari Operator
+      required:
+      - id
+      - role
+      - type
+      - userId
+      - vendorOrgId
+      - name
     Task:
       type: object
       properties:
@@ -1152,15 +1098,16 @@ components:
       - updatedAt
       - property
       - department
-    Priority:
+    AssigneeRole:
       type: string
       enum:
-      - WATCH
-      - LOWEST
-      - LOW
-      - NORMAL
-      - HIGH
-      - URGENT
+      - PRIMARY
+      - SECONDARY
+    BillToType:
+      type: string
+      enum:
+      - COMPANY
+      - PROPERTY
     GetTaskResponse:
       type: object
       properties:
@@ -1168,41 +1115,350 @@ components:
           $ref: '#/components/schemas/Task'
       required:
       - task
-    DailyWorkOrderAssignee:
+    CreateTaskRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          example: Replace bathroom light bulb
+        departmentId:
+          type: string
+          format: uuid
+          example: 33333333-3333-4333-8333-333333333333
+          description: Department that owns the task.
+        description:
+          type:
+          - string
+          - 'null'
+        propertyId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        propertyName:
+          type: string
+          minLength: 1
+        propertyElementId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        priority:
+          $ref: '#/components/schemas/Priority'
+        scheduledDate:
+          type:
+          - string
+          - 'null'
+          format: date
+          pattern: ^\d{4}-\d{2}-\d{2}$
+          example: '2026-05-22'
+        scheduledTime:
+          type:
+          - string
+          - 'null'
+          pattern: ^([01]\d|2[0-3]):[0-5]\d(:[0-5]\d)?$
+          example: '10:30:00'
+        estimatedDurationMinutes:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+        reservationId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        contactId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        pendingUntil:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          example: '2026-05-22T17:00:00.000Z'
+        parentTaskId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        templateId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        templateVariables:
+          $ref: '#/components/schemas/TaskTemplateVariables'
+        source:
+          $ref: '#/components/schemas/TaskSource'
+        sourceTagId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        sourceTagName:
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        isIssue:
+          type: boolean
+        isPublished:
+          type: boolean
+        vendorAcceptanceStatus:
+          $ref: '#/components/schemas/VendorAcceptanceStatus'
+        conversationId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        triggerSourceId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        triggerSourceType:
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        schedulingTiming:
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        schedulingTimingOffset:
+          type:
+          - integer
+          - 'null'
+        pmWorkspaceId:
+          type:
+          - string
+          - 'null'
+          minLength: 1
+        createdByAgentId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        aiProvenance: {}
+        primaryUserId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        primaryVendorOrgId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        additionalPrimaryIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+            example: 11111111-1111-4111-8111-111111111111
+        secondaryAssigneeIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+            example: 11111111-1111-4111-8111-111111111111
+        tagIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+            example: 11111111-1111-4111-8111-111111111111
+        skillIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+            example: 11111111-1111-4111-8111-111111111111
+        useDefaultAssignees:
+          type: boolean
+        allowInactive:
+          type: boolean
+      required:
+      - title
+      - departmentId
+    VendorAcceptanceStatus:
+      type:
+      - string
+      - 'null'
+      enum:
+      - PENDING
+      - ACCEPTED
+      - REJECTED
+      - null
+    TaskStatus:
+      type: string
+      enum:
+      - OPEN
+      - CREATED
+      - DRAFT
+      - DRAFTED
+      - SCHEDULED
+      - IN_PROGRESS
+      - FINISHED
+      - CLOSED
+      - PENDING_APPROVAL
+      - REQUEST_APPROVED
+      - REQUEST_REJECTED
+      - COMPLETED
+    DailyWorkOrdersResponse:
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          minLength: 1
+          example: haven-vacation-rentals
+        date:
+          type: string
+          format: date
+          pattern: ^\d{4}-\d{2}-\d{2}$
+          example: '2026-05-22'
+        workOrderCount:
+          type: integer
+          minimum: 0
+          example: 4
+        totalCost:
+          type:
+          - number
+          - 'null'
+          description: Daily total when all costed work orders use one currency; null for mixed currency.
+          example: 148.5
+        totalCostCurrency:
+          type:
+          - string
+          - 'null'
+          description: The daily total currency, MIXED for multiple currencies, or null when no cost exists.
+          example: EUR
+        costTotalsByCurrency:
+          type: object
+          additionalProperties:
+            type: number
+          description: Daily task cost totals grouped by currency.
+          example:
+            EUR: 148.5
+        workOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/DailyWorkOrder'
+      required:
+      - workspaceId
+      - date
+      - workOrderCount
+      - totalCost
+      - totalCostCurrency
+      - costTotalsByCurrency
+      - workOrders
+    TaskRelatedProperty:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        name:
+          type: string
+          example: Casa Duomo
+        status:
+          type: string
+          example: ACTIVE
+        address:
+          type:
+          - string
+          - 'null'
+          example: Via Torino 1
+        city:
+          type:
+          - string
+          - 'null'
+          example: Milano
+      required:
+      - id
+      - name
+      - status
+      - address
+      - city
+    TaskCostItem:
       type: object
       properties:
         id:
           type: string
           format: uuid
           example: 11111111-1111-4111-8111-111111111111
-        role:
-          $ref: '#/components/schemas/AssigneeRole'
-        type:
-          $ref: '#/components/schemas/DailyWorkOrderAssigneeType'
-        userId:
+        amount:
+          type: number
+          example: 35.5
+        currency:
+          type: string
+          minLength: 1
+          example: EUR
+        description:
+          type:
+          - string
+          - 'null'
+          example: Replacement bulb and labor
+        billToType:
+          $ref: '#/components/schemas/BillToType'
+        billToId:
           type:
           - string
           - 'null'
           format: uuid
           example: 11111111-1111-4111-8111-111111111111
-        vendorOrgId:
+        claimId:
           type:
           - string
           - 'null'
           format: uuid
           example: 11111111-1111-4111-8111-111111111111
-        name:
+        categoryId:
           type:
           - string
           - 'null'
-          example: Ari Operator
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        categoryName:
+          type:
+          - string
+          - 'null'
+          example: Maintenance materials
+        notes:
+          type:
+          - string
+          - 'null'
       required:
       - id
-      - role
-      - type
-      - userId
-      - vendorOrgId
-      - name
+      - amount
+      - currency
+      - description
+      - billToType
+      - billToId
+      - claimId
+      - categoryId
+      - categoryName
+      - notes
     UpdateTaskRequest:
       type: object
       properties:
@@ -1436,15 +1692,16 @@ components:
           type:
           - string
           - 'null'
-    VendorAcceptanceStatus:
-      type:
-      - string
-      - 'null'
-      enum:
-      - PENDING
-      - ACCEPTED
-      - REJECTED
-      - null
+    MutateTaskResponse:
+      type: object
+      properties:
+        task:
+          $ref: '#/components/schemas/Task'
+      required:
+      - task
+    TaskTemplateVariables:
+      type: object
+      additionalProperties: {}
     DailyWorkOrder:
       type: object
       properties:
@@ -1530,271 +1787,42 @@ components:
       - isNoCharge
       - costItems
       - assignees
-    TaskRelatedProperty:
-      type:
-      - object
-      - 'null'
-      properties:
-        id:
-          type: string
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        name:
-          type: string
-          example: Casa Duomo
-        status:
-          type: string
-          example: ACTIVE
-        address:
-          type:
-          - string
-          - 'null'
-          example: Via Torino 1
-        city:
-          type:
-          - string
-          - 'null'
-          example: Milano
-      required:
-      - id
-      - name
-      - status
-      - address
-      - city
-    TaskDepartment:
+    TaskAssignee:
       type: object
       properties:
         id:
           type: string
           format: uuid
           example: 11111111-1111-4111-8111-111111111111
+        role:
+          $ref: '#/components/schemas/AssigneeRole'
+        type:
+          $ref: '#/components/schemas/TaskAssigneeType'
+        userId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
+        vendorOrgId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
         name:
-          type: string
-          example: Maintenance
-        slug:
-          type: string
-          example: maintenance
+          type:
+          - string
+          - 'null'
+          example: Ari Operator
       required:
       - id
+      - role
+      - type
+      - userId
+      - vendorOrgId
       - name
-      - slug
-    AssigneeRole:
-      type: string
-      enum:
-      - PRIMARY
-      - SECONDARY
-    PaginationMeta:
-      type: object
-      properties:
-        total:
-          type: integer
-          minimum: 0
-          example: 125
-        limit:
-          type: integer
-          exclusiveMinimum: 0
-          example: 50
-        offset:
-          type: integer
-          minimum: 0
-          example: 0
-        hasMore:
-          type: boolean
-          example: true
-      required:
-      - total
-      - limit
-      - offset
-      - hasMore
-    CreateTaskRequest:
-      type: object
-      properties:
-        title:
-          type: string
-          minLength: 1
-          example: Replace bathroom light bulb
-        departmentId:
-          type: string
-          format: uuid
-          example: 33333333-3333-4333-8333-333333333333
-          description: Department that owns the task.
-        description:
-          type:
-          - string
-          - 'null'
-        propertyId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        propertyName:
-          type: string
-          minLength: 1
-        propertyElementId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        priority:
-          $ref: '#/components/schemas/Priority'
-        scheduledDate:
-          type:
-          - string
-          - 'null'
-          format: date
-          pattern: ^\d{4}-\d{2}-\d{2}$
-          example: '2026-05-22'
-        scheduledTime:
-          type:
-          - string
-          - 'null'
-          pattern: ^([01]\d|2[0-3]):[0-5]\d(:[0-5]\d)?$
-          example: '10:30:00'
-        estimatedDurationMinutes:
-          type:
-          - integer
-          - 'null'
-          minimum: 0
-        reservationId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        contactId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        pendingUntil:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          example: '2026-05-22T17:00:00.000Z'
-        parentTaskId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        templateId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        templateVariables:
-          $ref: '#/components/schemas/TaskTemplateVariables'
-        source:
-          $ref: '#/components/schemas/TaskSource'
-        sourceTagId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        sourceTagName:
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        isIssue:
-          type: boolean
-        isPublished:
-          type: boolean
-        vendorAcceptanceStatus:
-          $ref: '#/components/schemas/VendorAcceptanceStatus'
-        conversationId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        triggerSourceId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        triggerSourceType:
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        schedulingTiming:
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        schedulingTimingOffset:
-          type:
-          - integer
-          - 'null'
-        pmWorkspaceId:
-          type:
-          - string
-          - 'null'
-          minLength: 1
-        createdByAgentId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        aiProvenance: {}
-        primaryUserId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        primaryVendorOrgId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        additionalPrimaryIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-            example: 11111111-1111-4111-8111-111111111111
-        secondaryAssigneeIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-            example: 11111111-1111-4111-8111-111111111111
-        tagIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-            example: 11111111-1111-4111-8111-111111111111
-        skillIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-            example: 11111111-1111-4111-8111-111111111111
-        useDefaultAssignees:
-          type: boolean
-        allowInactive:
-          type: boolean
-      required:
-      - title
-      - departmentId
-    TaskAssigneeType:
-      type: string
-      enum:
-      - USER
-      - VENDOR
-    TaskCostItem:
+    DailyWorkOrderCostItem:
       type: object
       properties:
         id:
@@ -1853,61 +1881,33 @@ components:
       - categoryId
       - categoryName
       - notes
-    TaskAssignee:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        role:
-          $ref: '#/components/schemas/AssigneeRole'
-        type:
-          $ref: '#/components/schemas/TaskAssigneeType'
-        userId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        vendorOrgId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          example: 11111111-1111-4111-8111-111111111111
-        name:
-          type:
-          - string
-          - 'null'
-          example: Ari Operator
-      required:
-      - id
-      - role
-      - type
-      - userId
-      - vendorOrgId
-      - name
-    BillToType:
-      type: string
-      enum:
-      - COMPANY
-      - PROPERTY
     DailyWorkOrderAssigneeType:
       type: string
       enum:
       - USER
       - VENDOR
-    ApiError:
+    DeleteTaskResponse:
       type: object
       properties:
-        error:
+        deleted:
+          type: boolean
+          example: true
+        taskId:
           type: string
-        message:
-          type: string
-        details: {}
+          format: uuid
+          example: 11111111-1111-4111-8111-111111111111
       required:
-      - error
+      - deleted
+      - taskId
+    Priority:
+      type: string
+      enum:
+      - WATCH
+      - LOWEST
+      - LOW
+      - NORMAL
+      - HIGH
+      - URGENT
   securitySchemes:
     WorkspaceApiKey:
       type: http
