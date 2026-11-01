@@ -1,4 +1,4 @@
-# Trellistech
+# Trellis
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,6 +64,115 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Trellistech is a company surfaced as a portfolio company of y-combinator and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Trellis (Trellistech) is a Y Combinator-backed, AI-powered property operations platform for short-term and vacation rental operators. Trellis deploys AI agents across an operator's entire business - handling guest communications, coordinating field teams, and running day-to-day operations such as tasks, workforce scheduling, accounting, reviews, and the guest portal. For developers, Trellis publishes a versioned public REST API for CRUD access to tasks and properties, an official hosted MCP server (@trellistech/mcp-server) that exposes operational read and gated write tools to any MCP-compatible AI client, and connectors for property and finance systems including Guesty, Hostaway, Breezeway, Calry, Krossbooking, and Ramp.
 
-Backed by: y-combinator
+**Areas:** Company · Property Management · Vacation Rentals · Short-Term Rental · AI Agents · Hospitality · Task Management · MCP
+
+## Trellis on APIs.io
+
+Everything profiled for Trellis is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/trellistech/](https://apis.io/providers/trellistech/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Trellis Properties API](https://apis.io/apis/trellistech/trellistech-properties-api/) — Trellis property contracts generated from Hono/Zod schemas.
+- [Trellis Tasks API](https://apis.io/apis/trellistech/trellistech-tasks-api/) — Trellis task contracts generated from Hono/Zod schemas.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Trellis MCP Server](https://apis.io/servers/trellistech/trellis-mcp-server/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [Trellis Public API v1 properties API](https://apis.io/collections/trellistech/open-trellistech-properties-api/)
+- [Trellis Public API v1 properties tasks API](https://apis.io/collections/trellistech/open-trellistech-tasks-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Trellistech Public Api Overlay](https://apis.io/overlays/trellistech/trellistech-public-api-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Trellistech Authentication](https://apis.io/security/trellistech/trellistech-authentication/)
+- [Trellistech Domain Security](https://apis.io/security/trellistech/trellistech-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.trellistech.com)
+- [Documentation](https://docs.trellistech.com)
+- [Getting started](https://docs.trellistech.com/quickstart)
+- [API reference](https://docs.trellistech.com/api-reference/introduction)
+- [Sign up](https://app.trellistech.com)
+- [Blog](https://www.trellistech.com/blog)
+- [Terms of service](https://www.trellistech.com/terms)
+- [Privacy policy](https://www.trellistech.com/privacy)
+- [GitHub](https://github.com/trellis-tech)
+- [Status](https://status.trellistech.com)
+
+## API Evangelist rating
+
+**Kin Score 42.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.7 |
+| Contract quality | 47.8 |
+| Contract governance | 4.5 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 21.1 |
+
+**Agent readiness 29.6** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/trellistech/](https://apis.io/providers/trellistech/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Trellis: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/trellistech/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
